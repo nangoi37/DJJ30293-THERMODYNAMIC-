@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2 - DJJ30293 THERMODYNAMIC</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --accent: #e9ecef; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        
+        /* Navigation Menu */
+        .navbar { background: var(--primary); display: flex; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .navbar a { color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
+        .navbar a:hover { background: rgba(255,255,255,0.1); }
+        .navbar a.active { border-bottom: 3px solid #ffd700; background: rgba(255,255,255,0.15); }
+        
+        .container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.05); border-radius: 8px; }
+        
+        /* Video */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0; border-radius: 8px; background: #000; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        h1 { color: #222; border-bottom: 3px solid var(--primary); padding-bottom: 5px; margin-top: 20px; }
+        h2 { color: var(--primary); border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 35px; }
+        h3 { color: #444; margin-top: 25px; }
+        p { text-align: justify; }
+        .concept-box { background: var(--accent); border-left: 4px solid var(--primary); padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; overflow-x: auto; font-size: 1.05rem; }
+        .rule-box { background: #d4edda; border-left: 4px solid #28a745; padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; font-size: 1.05rem; }
+        .step-box { background: #fdfdfe; border: 1px solid #e0e0e0; padding: 15px; margin: 10px 0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        
+        .img-container { text-align: center; margin: 25px 0; background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .img-container svg { max-width: 100%; height: auto; }
+        .img-caption { font-size: 0.9rem; color: #666; margin-top: 15px; font-style: italic; border-top: 1px solid #eee; padding-top: 10px; }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .eq { font-family: "Times New Roman", Times, serif; font-size: 1.15rem; font-style: italic; letter-spacing: 1px; text-align: center; margin: 10px 0; }
+        .eq-inline { font-family: "Times New Roman", Times, serif; font-size: 1.05rem; font-style: italic; }
+
+        .calculator { background: #fff3cd; border: 1px solid #ffeeba; padding: 25px; border-radius: 8px; margin: 40px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        .calculator h2 { margin-top: 0; border-bottom: 2px solid #e0a800; color: #856404; padding-bottom: 5px; }
+        input, select, button { padding: 12px; margin: 8px 0; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .calc-btn { background: #0056b3; color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.3s; margin-top: 15px; }
+        .calc-btn:hover { background: #004494; }
+        .solution-step { background: white; padding: 15px; margin-top: 15px; border-radius: 4px; border: 1px dashed #ccc; font-family: monospace; white-space: pre-wrap; font-size: 15px; overflow-x: auto; display: none; }
+        .input-group { display: flex; flex-direction: column; margin-top: 10px; }
+        .input-group label { margin-top: 10px; font-weight: bold; font-size: 0.9rem; color: #555; }
+
+        .quiz-btn-container { text-align: center; margin: 50px 0 20px 0; border-top: 2px dashed #ddd; padding-top: 30px; }
+        .quiz-btn { background: #28a745; color: white; border: none; font-size: 18px; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.15); transition: background 0.3s, transform 0.2s; }
+        .quiz-btn:hover { background: #218838; transform: translateY(-2px); }
+        
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; border: none; background: none; color: #888; line-height: 1; padding: 0; }
+        .close-btn:hover { color: #333; }
+        .quiz-header { border-bottom: 2px solid var(--primary); margin-bottom: 20px; padding-bottom: 10px; color: var(--primary); }
+        
+        .question-block { margin-bottom: 25px; padding: 18px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #ccc; }
+        .question-text { font-weight: bold; margin-bottom: 12px; font-size: 1.05rem; }
+        .option-label { display: block; margin-bottom: 8px; cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.2s; border: 1px solid transparent; }
+        .option-label:hover { background: #e2e6ea; border: 1px solid #dae0e5; }
+        .option-label input { width: auto; margin-right: 12px; transform: scale(1.2); }
+        
+        .show-how-btn { background: #17a2b8; color: white; border: none; padding: 6px 12px; font-size: 0.85rem; border-radius: 4px; cursor: pointer; margin-top: 10px; font-weight: bold; width: auto; }
+        .show-how-btn:hover { background: #138496; }
+        .hint-box { display: none; background: #e0f7fa; color: #0c5460; padding: 12px; border-radius: 4px; border-left: 4px solid #17a2b8; margin-top: 10px; font-size: 0.95rem; white-space: pre-wrap; font-family: monospace;}
+
+        .correct-ans { background-color: #d4edda !important; border: 1px solid #c3e6cb !important; color: #155724; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; border: 1px solid #f5c6cb !important; color: #721c24; text-decoration: line-through; }
+        #quiz-result { text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 25px; padding: 15px; border-radius: 8px; display: none; }
+        #submitQuizBtn { background: var(--primary); color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; width: 100%; }
+        #submitQuizBtn:hover { background: #004494; }
+    </style>
+</head>
+<body>
+
+    <!-- Unified App Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chapter1.html">Ch 1</a>
+        <a href="chapter2.html" class="active">Ch 2</a>
+        <a href="chapter3.html">Ch 3</a>
+        <a href="chapter4.html" style="border-right: none;">Ch 4</a>
+    </div>
+
+    <div class="container">
+        
+        <h1>Chapter 2: Properties of Pure Substances</h1>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/VMsPZ5xitmc" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <h2>2.1 Three Phases of Pure Substances</h2>
+        <p>A pure substance can exist in three primary phases, defined by their molecular arrangement:<!--[cite: 5]--></p>
+        <ul>
+            <li><strong>Solid Phase:</strong> Molecules are closely bound, relatively dense, and arranged in a rigid three-dimensional pattern. They do not easily deform (e.g., ice).<!--[cite: 5]--></li>
+            <li><strong>Liquid Phase:</strong> Molecules are closely bound and dense, but are no longer rigidly structured. They are free to move within a fixed volume (e.g., water).<!--[cite: 5]--></li>
+            <li><strong>Steam/Gas Phase:</strong> Molecules virtually do not attract each other, are spaced far apart, and move at random. There is neither a fixed volume nor a fixed shape (e.g., steam).<!--[cite: 5]--></li>
+        </ul>
+
+        <h2>2.2 Phase Change Process at Constant Pressure</h2>
+        <p>When heating water in a frictionless piston-cylinder at a constant pressure, the substance undergoes several distinct states:<!--[cite: 5]--></p>
+        <ol>
+            <li><strong>Compressed (Subcooled) Liquid:</strong> The fluid remains entirely within the liquid state, below the saturation temperature.<!--[cite: 5]--></li>
+            <li><strong>Saturated Liquid:</strong> All fluid is liquid, but even the slightest addition of energy will result in the formation of some vapor.<!--[cite: 5]--></li>
+            <li><strong>Saturated Liquid-Vapour Mixture (Wet Steam):</strong> Liquid and steam exist together in a mixture. As long as liquid is present, vaporization continues at a <strong>constant temperature</strong>.<!--[cite: 5]--></li>
+            <li><strong>Saturated Steam:</strong> All fluid is in the vapor state, but the slightest loss of energy would result in condensation.<!--[cite: 5]--></li>
+            <li><strong>Superheated Steam:</strong> The further addition of heat causes the temperature of the steam to increase at constant pressure.<!--[cite: 5]--></li>
+        </ol>
+
+        <div class="img-container">
+            <svg viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+                <!-- Axes -->
+                <line x1="50" y1="300" x2="550" y2="300" stroke="#333" stroke-width="2" /> <!-- v-axis -->
+                <line x1="50" y1="300" x2="50" y2="50" stroke="#333" stroke-width="2" />  <!-- T-axis -->
+                <text x="560" y="305" font-family="sans-serif" font-weight="bold">v</text>
+                <text x="20" y="40" font-family="sans-serif" font-weight="bold">T, °C</text>
+
+                <!-- T labels -->
+                <text x="20" y="270" font-family="sans-serif">20</text>
+                <text x="10" y="165" font-family="sans-serif">100</text>
+                <text x="10" y="95" font-family="sans-serif">300</text>
+
+                <!-- Heating Curve -->
+                <path d="M 90 270 L 160 160" fill="none" stroke="#e83e8c" stroke-width="4" />
+                <circle cx="90" cy="270" r="6" fill="#333" /> <text x="110" y="275" font-weight="bold" font-size="16">1</text>
+                <circle cx="160" cy="160" r="6" fill="#333" /> <text x="145" y="145" font-weight="bold" font-size="16">2</text>
+                
+                <path d="M 160 160 L 420 160" fill="none" stroke="#e83e8c" stroke-width="4" />
+                <circle cx="290" cy="160" r="6" fill="#333" /> <text x="285" y="145" font-weight="bold" font-size="16">3</text>
+                <circle cx="420" cy="160" r="6" fill="#333" /> <text x="410" y="145" font-weight="bold" font-size="16">4</text>
+                
+                <path d="M 420 160 L 520 70" fill="none" stroke="#e83e8c" stroke-width="4" />
+                <circle cx="520" cy="70" r="6" fill="#333" /> <text x="535" y="75" font-weight="bold" font-size="16">5</text>
+
+                <!-- Distanced Labels -->
+                <text x="110" y="205" text-anchor="middle" font-family="sans-serif" font-size="13" transform="rotate(-57 110 205)">Compressed liquid</text>
+                <text x="290" y="125" text-anchor="middle" font-family="sans-serif" font-size="13">Saturated mixture</text>
+                <text x="475" y="90" text-anchor="middle" font-family="sans-serif" font-size="13" transform="rotate(-42 475 90)">Superheated vapor</text>
+            </svg>
+            <div class="img-caption">Figure 2.1: T-v diagram for the heating process of water at constant pressure.</div>
+        </div>
+
+        <h2>2.3 Property Diagrams (T-v, P-v, P-T)</h2>
+        <p>The variations of properties during phase-change processes are best studied using property diagrams:<!--[cite: 5]--></p>
+        <ul>
+            <li><strong>T-v Diagram:</strong> Shows temperature versus specific volume. The constant pressure lines slope upwards in the compressed liquid region, are completely flat (horizontal) inside the saturated vapor dome, and curve upwards again in the superheated region.<!--[cite: 5]--></li>
+            <li><strong>P-v Diagram:</strong> Shows pressure versus specific volume. Constant temperature lines curve downwards in the superheated region and are completely flat inside the saturated vapor dome.<!--[cite: 5]--></li>
+            <li><strong>P-T Diagram:</strong> Often called the Phase Diagram. It shows the solid, liquid, and vapor regions separated by the sublimation, melting, and vaporization lines. The point where all three phases meet is the <strong>Triple point</strong>. The point where the liquid and vapor phases merge is the <strong>Critical point</strong>.<!--[cite: 5]--></li>
+        </ul>
+
+        <h2>2.4 Thermodynamic Properties and Tables</h2>
+        <p>Thermodynamic properties are tabulated for saturated liquid, saturated vapour, superheated vapor, and compressed liquid regions. Key properties include:<!--[cite: 5]--></p>
+        <ul>
+            <li><strong>Enthalpy (<span class="eq-inline">H</span>):</strong> Equal to the sum of internal energy plus the product of pressure and volume. <br> <div class="eq">H = U + PV</div><!--[cite: 5]--></li>
+            <li><strong>Internal Energy (<span class="eq-inline">u</span>):</strong> The total kinetic and potential energy associated with molecular motion, including energy in chemical bonds.<!--[cite: 5]--></li>
+            <li><strong>Entropy (<span class="eq-inline">s</span>):</strong> A property associated with the second law of thermodynamics, representing the measure of a system's molecular disorder or randomness.<!--[cite: 5]--></li>
+        </ul>
+        <p>In property tables, subscripts denote the state:<!--[cite: 5]--></p>
+        <ul>
+            <li><span class="eq-inline">f</span> = saturated liquid (e.g., <span class="eq-inline">v<sub>f</sub></span>)<!--[cite: 5]--></li>
+            <li><span class="eq-inline">g</span> = saturated vapor (e.g., <span class="eq-inline">v<sub>g</sub></span>)<!--[cite: 5]--></li>
+            <li><span class="eq-inline">fg</span> = the difference between saturated vapor and saturated liquid (e.g., <span class="eq-inline">v<sub>fg</sub> = v<sub>g</sub> - v<sub>f</sub></span>)<!--[cite: 5]--></li>
+        </ul>
+
+        <h2>2.5 Properties of a Wet Mixture (Dryness Fraction)</h2>
+        <p>During vaporization, the mixture is analyzed using the <strong>Dryness Fraction (Quality), <span class="eq-inline">x</span></strong>, which is the ratio of the mass of vapor to the total mass of the mixture:<!--[cite: 5]--></p>
+        <div class="concept-box">
+            <div class="eq">x = m<sub>steam</sub> / m<sub>total</sub></div>
+        </div>
+        <ul>
+            <li>For a saturated liquid, <span class="eq-inline">x = 0</span>.<!--[cite: 5]--></li>
+            <li>For dry saturated steam, <span class="eq-inline">x = 1</span>.<!--[cite: 5]--></li>
+            <li>In the wet steam region, <span class="eq-inline">0 &lt; x &lt; 1</span>.<!--[cite: 5]--></li>
+        </ul>
+        <p>Because the volume of liquid is usually negligibly small compared to steam, the specific volume is calculated as <span class="eq-inline">v = x v<sub>g</sub></span>. Other properties are calculated as follows:<!--[cite: 5]--></p>
+        <div class="rule-box">
+            <strong>Key Mixture Equations:</strong><br>
+            <div class="eq" style="text-align: left; padding-left: 20px;">
+                Specific Enthalpy: h = h<sub>f</sub> + x h<sub>fg</sub><br><br>
+                Specific Internal Energy: u = u<sub>f</sub> + x (u<sub>g</sub> - u<sub>f</sub>)<br><br>
+                Specific Entropy: s = s<sub>f</sub> + x s<sub>fg</sub>
+            </div>
+        </div>
+
+        <h2>2.6 Superheated Vapour</h2>
+        <p>Steam is superheated when its temperature is greater than the saturation temperature (<span class="eq-inline">t<sub>s</sub></span>) corresponding to its pressure. The degree of superheat is given by:<!--[cite: 5]--></p>
+        <div class="concept-box">
+            <div class="eq">Degree of superheat = t<sub>superheat</sub> - t<sub>saturation</sub></div>
+        </div>
+        <p>If specific internal energy is not tabulated for high pressures (above 70 bar), it can be calculated using the relation: <span class="eq-inline">u = h - Pv</span>.<!--[cite: 5]--></p>
+
+        <h2>2.7 Interpolation Methods</h2>
+        <p>When an exact value is not listed in the steam tables, we use interpolation to find it based on surrounding tabulated values.<!--[cite: 5]--></p>
+        
+        <h3>Single Interpolation</h3>
+        <p>Used when one variable (e.g., pressure) falls between two tabulated rows.<!--[cite: 5]--></p>
+        <div class="step-box">
+            <strong>Example:</strong> Determine the saturation temperature at 77 bar.<!--[cite: 5]--><br>
+            <em>From Tables:</em> At 75 bar, t<sub>s</sub> = 290.5 °C. At 80 bar, t<sub>s</sub> = 295 °C.<!--[cite: 5]--><br>
+            <em>Equation:</em> <span class="eq-inline">(t<sub>s</sub> - 290.5) / (77 - 75) = (295 - 290.5) / (80 - 75)</span><!--[cite: 5]--><br>
+            <em>Solution:</em> <span class="eq-inline">t<sub>s</sub> = 292.3 °C</span><!--[cite: 5]-->
+        </div>
+
+        <h3>Double Interpolation</h3>
+        <p>Used in superheated tables when <em>two</em> properties (e.g., Temperature and Pressure) are not exactly tabulated. You must interpolate across the rows first to find intermediate values, and then interpolate vertically between those new values.<!--[cite: 5]--></p>
+        <div class="step-box">
+            <strong>Example:</strong> Determine specific enthalpy of superheated steam at 25 bar and 320°C.<!--[cite: 5]--><br>
+            <em>Step 1:</em> Find h<sub>1</sub> at 20 bar, 320°C. Interpolate between 300°C (h=3025) and 350°C (h=3138). <br>-> <span class="eq-inline">h<sub>1</sub> = 3070.2 kJ/kg</span>.<!--[cite: 5]--><br>
+            <em>Step 2:</em> Find h<sub>2</sub> at 30 bar, 320°C. Interpolate between 300°C (h=2995) and 350°C (h=3117). <br>-> <span class="eq-inline">h<sub>2</sub> = 3043.8 kJ/kg</span>.<!--[cite: 5]--><br>
+            <em>Step 3:</em> Interpolate between 20 bar (h<sub>1</sub>) and 30 bar (h<sub>2</sub>) to find h at 25 bar. <br>-> <span class="eq-inline">h = 3057 kJ/kg</span>.<!--[cite: 5]-->
+        </div>
+
+        <h2>2.8 Ideal Gas Model (Equation of State)</h2>
+        <p>Two foundational laws describe the behavior of a perfect gas:<!--[cite: 5]--></p>
+        <ul>
+            <li><strong>Boyle's Law:</strong> If Temperature (<span class="eq-inline">T</span>) remains constant, volume is inversely proportional to pressure. <span class="eq-inline">P<sub>1</sub> V<sub>1</sub> = P<sub>2</sub> V<sub>2</sub></span>.<!--[cite: 5]--></li>
+            <li><strong>Charles' Law:</strong> If Pressure (<span class="eq-inline">P</span>) remains constant, volume is directly proportional to absolute temperature. <span class="eq-inline">V<sub>1</sub> / T<sub>1</sub> = V<sub>2</sub> / T<sub>2</sub></span>.<!--[cite: 5]--></li>
+        </ul>
+        <p>Combining these yields the <strong>Ideal-Gas Equation of State</strong>:<!--[cite: 5]--></p>
+        <div class="concept-box">
+            <div class="eq">P v = R T &nbsp;&nbsp;or&nbsp;&nbsp; P V = m R T</div>
+        </div>
+        <p>Where <span class="eq-inline">P</span> is absolute pressure (kPa), <span class="eq-inline">T</span> is absolute temperature (K), <span class="eq-inline">v</span> is specific volume (m³/kg), and <span class="eq-inline">R</span> is the gas constant (kJ/kg K).<!--[cite: 5]--></p>
+        <p>The gas constant <span class="eq-inline">R</span> is determined from <span class="eq-inline">R = R<sub>u</sub> / M</span>, where <span class="eq-inline">R<sub>u</sub></span> is the Universal Gas Constant (8.3144 kJ/kmol K) and <span class="eq-inline">M</span> is the molecular weight.<!--[cite: 5]--></p>
+
+        <h2>2.9 Specific Heats</h2>
+        <p>Specific heat is defined as the energy required to raise the temperature of a unit mass of a substance by one degree.<!--[cite: 5]--></p>
+        <ul>
+            <li><strong>Specific Heat at Constant Volume (<span class="eq-inline">C<sub>v</sub></span>):</strong> The heat supplied while volume remains constant. <br>Heat flow equation: <span class="eq-inline">Q = m C<sub>v</sub> (T<sub>2</sub> - T<sub>1</sub>)</span>. This equals the change in internal energy (<span class="eq-inline">U<sub>2</sub> - U<sub>1</sub></span>).<!--[cite: 5]--></li>
+            <li><strong>Specific Heat at Constant Pressure (<span class="eq-inline">C<sub>p</sub></span>):</strong> The heat supplied while pressure remains constant. <br>Heat flow equation: <span class="eq-inline">Q = m C<sub>p</sub> (T<sub>2</sub> - T<sub>1</sub>)</span>.<!--[cite: 5]--></li>
+        </ul>
+        <div class="rule-box">
+            <strong>Relationship Between Specific Heats:</strong><br>
+            <div class="eq">R = C<sub>p</sub> - C<sub>v</sub></div><!--[cite: 5]-->
+            <div class="eq">Specific Heat Ratio (γ) = C<sub>p</sub> / C<sub>v</sub></div><!--[cite: 5]-->
+        </div>
+
+        <!-- Interactive Calculator Section -->
+        <div class="calculator">
+            <h2>Interactive App Tool: Property Solvers</h2>
+            <p>Select the problem type and input your known variables to calculate the thermodynamic properties step-by-step.</p>
+            
+            <select id="calcType" onchange="updateInputs()">
+                <option value="wet_steam">Wet Steam Mixture Property (h, u, or s)</option>
+                <option value="ideal_gas_m">Ideal Gas: Solve for Mass (m)</option>
+                <option value="specific_heat">Specific Heat Relations (Find R and γ)</option>
+            </select>
+            
+            <div id="dynamic-inputs">
+                <!-- Inputs injected via JS -->
+            </div>
+            
+            <button class="calc-btn" onclick="solveProblem()">Calculate Step-by-Step</button>
+
+            <div id="solutionOutput" class="solution-step" style="display:none;"></div>
+        </div>
+
+        <!-- PRACTICE QUIZ SECTION -->
+        <div class="quiz-btn-container">
+            <button class="quiz-btn" onclick="openQuiz()">Take Chapter 2 Practice Quiz</button>
+            <p style="margin-top: 10px; color: #555; font-size: 0.95rem;">Test your knowledge on mixtures, interpolation, and ideal gas calculations using examples from the lecture slides.</p>
+        </div>
+
+    </div>
+
+    <!-- QUIZ MODAL -->
+    <div id="quizModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeQuiz()">&times;</button>
+            <h2 class="quiz-header">Practice Problems Quiz</h2>
+            <div id="quiz-container">
+                <!-- Quiz questions injected here -->
+            </div>
+            <button id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Calculator Logic ---
+        function updateInputs() {
+            const type = document.getElementById('calcType').value;
+            const container = document.getElementById('dynamic-inputs');
+            container.innerHTML = '';
+            
+            if(type === 'wet_steam') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Saturated Liquid value (f):</label>
+                        <input type="number" id="input_f" placeholder="e.g. 909 (for h_f)">
+                        <label>Difference value (fg):</label>
+                        <input type="number" id="input_fg" placeholder="e.g. 1890 (for h_fg)">
+                        <label>Dryness Fraction (x):</label>
+                        <input type="number" id="input_x" placeholder="e.g. 0.9">
+                    </div>
+                `;
+            } else if (type === 'ideal_gas_m') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Absolute Pressure, P (kN/m²):</label>
+                        <input type="number" id="input_P" placeholder="e.g. 300">
+                        <label>Volume, V (m³):</label>
+                        <input type="number" id="input_V" placeholder="e.g. 0.046">
+                        <label>Gas Constant, R (kJ/kg K):</label>
+                        <input type="number" id="input_R" placeholder="e.g. 0.29">
+                        <label>Absolute Temperature, T (K):</label>
+                        <input type="number" id="input_T" placeholder="e.g. 318">
+                    </div>
+                `;
+            } else if (type === 'specific_heat') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Specific Heat at Constant Pressure, Cp (kJ/kg K):</label>
+                        <input type="number" id="input_cp" placeholder="e.g. 1.005">
+                        <label>Specific Heat at Constant Volume, Cv (kJ/kg K):</label>
+                        <input type="number" id="input_cv" placeholder="e.g. 0.718">
+                    </div>
+                `;
+            }
+        }
+
+        updateInputs();
+
+        function solveProblem() {
+            const type = document.getElementById('calcType').value;
+            const output = document.getElementById('solutionOutput');
+            let steps = "";
+            
+            if (type === 'wet_steam') {
+                const f = parseFloat(document.getElementById('input_f').value);
+                const fg = parseFloat(document.getElementById('input_fg').value);
+                const x = parseFloat(document.getElementById('input_x').value);
+                if(isNaN(f) || isNaN(fg) || isNaN(x)) return alert("Enter valid numbers");
+                
+                const result = f + (x * fg);
+                steps = `Objective: Calculate property of a Wet Mixture\n\n`;
+                steps += `Step 1: State the mixture equation.\n  Property = f + x(fg)\n\n`;
+                steps += `Step 2: Plug in known variables.\n  Value = ${f} + ${x}(${fg})\n\n`;
+                steps += `Step 3: Calculate the final result.\n  Value = ${result.toFixed(2)}`;
+            } 
+            else if (type === 'ideal_gas_m') {
+                const P = parseFloat(document.getElementById('input_P').value);
+                const V = parseFloat(document.getElementById('input_V').value);
+                const R = parseFloat(document.getElementById('input_R').value);
+                const T = parseFloat(document.getElementById('input_T').value);
+                if(isNaN(P) || isNaN(V) || isNaN(R) || isNaN(T)) return alert("Enter valid numbers");
+                
+                const m = (P * V) / (R * T);
+                steps = `Objective: Solve for Mass using the Ideal Gas Equation\n\n`;
+                steps += `Step 1: State the Ideal Gas Law.\n  PV = mRT\n  Rearranged: m = (PV) / (RT)\n\n`;
+                steps += `Step 2: Plug in known variables.\n  m = (${P} × ${V}) / (${R} × ${T})\n\n`;
+                steps += `Step 3: Calculate the final result.\n  m = ${(P*V).toFixed(4)} / ${(R*T).toFixed(4)}\n  m = ${m.toFixed(4)} kg`;
+            }
+            else if (type === 'specific_heat') {
+                const cp = parseFloat(document.getElementById('input_cp').value);
+                const cv = parseFloat(document.getElementById('input_cv').value);
+                if(isNaN(cp) || isNaN(cv)) return alert("Enter valid numbers");
+                
+                const R = cp - cv;
+                const gamma = cp / cv;
+                
+                steps = `Objective: Calculate Gas Constant (R) and Specific Heat Ratio (γ)\n\n`;
+                steps += `Step 1: Calculate the Gas Constant (R).\n  Formula: R = Cp - Cv\n  R = ${cp} - ${cv}\n  R = ${R.toFixed(4)} kJ/kg K\n\n`;
+                steps += `Step 2: Calculate the Specific Heat Ratio (γ).\n  Formula: γ = Cp / Cv\n  γ = ${cp} / ${cv}\n  γ = ${gamma.toFixed(4)}`;
+            }
+
+            output.style.display = 'block';
+            output.innerHTML = steps;
+        }
+
+        // --- Quiz Logic ---
+        const quizData = [
+            { q: "1. For steam at 20 bar with a quality of 0.9, calculate the specific volume (v). (Given: v_g at 20 bar = 0.09957 m³/kg)", options: ["0.0754 m³/kg", "0.0896 m³/kg", "0.0995 m³/kg", "0.1005 m³/kg"], ans: 1, hint: "Formula: v = x * v_g\nCalculation: v = 0.9 * 0.09957 = 0.0896 m³/kg." },
+            { q: "2. Find the dryness fraction (x) of steam at 8 bar if the specific internal energy is 2450 kJ/kg. (Given: u_f = 720 kJ/kg, u_g = 2577 kJ/kg)", options: ["0.832", "0.895", "0.931", "0.980"], ans: 2, hint: "Formula: u = u_f + x(u_g - u_f)\nRearrange: x = (u - u_f) / (u_g - u_f)\nCalculation: x = (2450 - 720) / (2577 - 720) = 1730 / 1857 = 0.931." },
+            { q: "3. The internal energy of wet steam is 2000 kJ/kg at 42 bar. If u_f = 1097 kJ/kg and u_g = 2601 kJ/kg, what is the dryness fraction (x)?", options: ["0.4", "0.6", "0.8", "0.9"], ans: 1, hint: "Formula: u = u_f + x(u_g - u_f)\nCalculation: 2000 = 1097 + x(2601 - 1097)\nx = (2000 - 1097) / 1504 = 0.6." },
+            { q: "4. Steam at 100 bar has a specific volume of 0.02812 m³/kg. If v_g at 100 bar is 0.01802 m³/kg, what is the state of the steam?", options: ["Compressed Liquid", "Saturated Liquid", "Wet Steam", "Superheated Vapor"], ans: 3, hint: "Compare actual volume to saturated vapor volume.\nSince v (0.02812) > v_g (0.01802), the steam has expanded past the saturation dome. It is Superheated Vapor." },
+            { q: "5. Steam at 120 bar is at 500°C. If the saturation temperature at 120 bar is 324.6°C, what is the degree of superheat?", options: ["100.0 °C", "150.5 °C", "175.4 °C", "824.6 °C"], ans: 2, hint: "Formula: Degree of superheat = T_superheat - T_saturation\nCalculation: 500°C - 324.6°C = 175.4°C." },
+            { q: "6. 0.9 m³ of dry saturated steam at 225 kN/m² is cooled in a rigid cylinder until the pressure drops to 180 kN/m². What type of process is this?", options: ["Constant Pressure (Isobaric)", "Constant Volume (Isochoric)", "Constant Temperature (Isothermal)", "Constant Entropy (Isentropic)"], ans: 1, hint: "The problem states the steam is contained in a 'rigid cylinder' and is 'cooled at constant volume process'. Therefore, it is Isochoric (v1 = v2)." },
+            { q: "7. Using Single Interpolation: Find the specific enthalpy (h) at 275°C, given that h at 250°C = 2925 kJ/kg and h at 300°C = 3039 kJ/kg.", options: ["2950 kJ/kg", "2982 kJ/kg", "3000 kJ/kg", "3015 kJ/kg"], ans: 1, hint: "Formula: (h - h1) / (T - T1) = (h2 - h1) / (T2 - T1)\n(h - 2925) / (275 - 250) = (3039 - 2925) / (300 - 250)\n(h - 2925) / 25 = 114 / 50\nh = 2925 + (2.28 * 25) = 2982 kJ/kg." },
+            { q: "8. A perfect gas at 0.54 m³ and 345°C (618 K) undergoes a constant pressure process until volume is 0.32 m³. What is the final temperature (T2)?", options: ["366 K", "400 K", "515 K", "1042 K"], ans: 0, hint: "Charles' Law: V1 / T1 = V2 / T2\nRearrange: T2 = T1 * (V2 / V1)\nCalculation: T2 = 618 K * (0.32 / 0.54) = 366 K." },
+            { q: "9. A quantity of gas is heated at constant temperature from an initial volume of 0.22 m³ and 325 kN/m² to a final state of 170 kN/m². Calculate the final volume.", options: ["0.115 m³", "0.220 m³", "0.421 m³", "0.850 m³"], ans: 2, hint: "Boyle's Law: P1 * V1 = P2 * V2\nRearrange: V2 = (P1 * V1) / P2\nCalculation: V2 = (325 * 0.22) / 170 = 0.421 m³." },
+            { q: "10. 0.046 m³ of gas is in a cylinder at 300 kN/m² and 45°C (318 K). Given R = 0.29 kJ/kg K, determine the mass of the gas.", options: ["0.1496 kg", "0.2250 kg", "1.560 kg", "2.140 kg"], ans: 0, hint: "Ideal Gas Law: PV = mRT\nRearrange: m = (P * V) / (R * T)\nCalculation: m = (300 * 0.046) / (0.29 * 318) = 13.8 / 92.22 = 0.1496 kg." },
+            { q: "11. 0.04 kg of a perfect gas occupies 0.0072 m³ at 6.76 bar (676 kN/m²) and 127°C (400 K). What is the gas constant R?", options: ["0.2870 kJ/kg K", "0.3042 kJ/kg K", "0.4120 kJ/kg K", "0.5201 kJ/kg K"], ans: 1, hint: "Formula: R = (P1 * V1) / (m * T1)\nNote: Use absolute pressure (kN/m²) and absolute temperature (K).\nR = (676 * 0.0072) / (0.04 * 400) = 4.8672 / 16 = 0.3042 kJ/kg K." },
+            { q: "12. Using the gas constant R = 0.3042 kJ/kg K from the previous question, what is the molecular weight M of the gas? (Given R_u = 8.3144)", options: ["18 kg/kmol", "24 kg/kmol", "27 kg/kmol", "32 kg/kmol"], ans: 2, hint: "Formula: M = R_u / R\nCalculation: M = 8.3144 / 0.3042 = 27.33 (approx 27 kg/kmol)." },
+            { q: "13. A perfect gas has specific heats Cp = 0.846 kJ/kg K and Cv = 0.657 kJ/kg K. What is the gas constant R?", options: ["0.189 kJ/kg K", "0.287 kJ/kg K", "1.288 kJ/kg K", "1.503 kJ/kg K"], ans: 0, hint: "Formula: R = Cp - Cv\nCalculation: R = 0.846 - 0.657 = 0.189 kJ/kg K." },
+            { q: "14. 2 kg of a gas receives 200 kJ of heat at a constant volume process. If the temperature increases by 100°C, determine the Cv.", options: ["0.5 kJ/kg K", "1.0 kJ/kg K", "1.5 kJ/kg K", "2.0 kJ/kg K"], ans: 1, hint: "Formula for constant volume heat: Q = m * Cv * (T2 - T1)\nRearrange: Cv = Q / (m * ΔT)\nCalculation: Cv = 200 / (2 * 100) = 1.0 kJ/kg K." },
+            { q: "15. 0.18 kg gas is at 15°C (288 K), volume 0.17 m³, and pressure 130 kN/m². Calculate the gas constant R.", options: ["0.287 kJ/kg K", "0.426 kJ/kg K", "0.512 kJ/kg K", "0.720 kJ/kg K"], ans: 1, hint: "Ideal Gas Law: PV = mRT\nRearrange: R = (P * V) / (m * T)\nCalculation: R = (130 * 0.17) / (0.18 * 288) = 22.1 / 51.84 = 0.426 kJ/kg K." }
+        ];
+
+        function buildQuiz() {
+            const container = document.getElementById("quiz-container");
+            container.innerHTML = ""; 
+            quizData.forEach((item, index) => {
+                let optionsHtml = "";
+                item.options.forEach((opt, optIndex) => {
+                    optionsHtml += `<label class="option-label" id="label-${index}-${optIndex}"><input type="radio" name="q${index}" value="${optIndex}"> ${opt}</label>`;
+                });
+                container.innerHTML += `
+                    <div class="question-block" id="qb-${index}">
+                        <div class="question-text">${item.q}</div>
+                        ${optionsHtml}
+                        <button type="button" class="show-how-btn" onclick="toggleHint(${index})">Show me how</button>
+                        <div id="hint-${index}" class="hint-box">${item.hint}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleHint(index) {
+            const hintBox = document.getElementById(`hint-${index}`);
+            hintBox.style.display = hintBox.style.display === "block" ? "none" : "block";
+        }
+
+        function openQuiz() {
+            buildQuiz();
+            document.getElementById("quiz-result").style.display = "none";
+            document.getElementById("submitQuizBtn").style.display = "block";
+            document.getElementById("quizModal").style.display = "flex";
+        }
+
+        function closeQuiz() { document.getElementById("quizModal").style.display = "none"; }
+
+        function submitQuiz() {
+            let score = 0;
+            quizData.forEach((item, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                const block = document.getElementById(`qb-${index}`);
+                const allLabels = block.querySelectorAll('.option-label');
+                allLabels.forEach(lbl => { lbl.classList.remove('correct-ans', 'wrong-ans'); });
+
+                if (selectedOption) {
+                    const selectedVal = parseInt(selectedOption.value);
+                    if (selectedVal === item.ans) {
+                        score++;
+                        document.getElementById(`label-${index}-${selectedVal}`).classList.add('correct-ans');
+                    } else {
+                        document.getElementById(`label-${index}-${selectedVal}`).classList.add('wrong-ans');
+                        document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans'); 
+                    }
+                } else {
+                    document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans');
+                }
+            });
+
+            const resultDiv = document.getElementById("quiz-result");
+            resultDiv.innerHTML = `You scored ${score} out of 15!`;
+            if (score >= 12) {
+                resultDiv.style.color = "#155724"; resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.border = "1px solid #c3e6cb";
+            } else {
+                resultDiv.style.color = "#721c24"; resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.border = "1px solid #f5c6cb";
+            }
+            resultDiv.style.display = "block";
+            document.getElementById("submitQuizBtn").style.display = "none";
+        }
+    </script>
+</body>
+</html>

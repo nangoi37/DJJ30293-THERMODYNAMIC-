@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJJ30293 THERMODYNAMIC</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #000000;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .hero {
+            text-align: center;
+            padding: 70px 20px 50px 20px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .nav-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            width: 100%;
+            max-width: 650px;
+        }
+        .nav-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 28px;
+            text-decoration: none;
+            color: var(--text-color);
+            border: 3px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+        .nav-card.exam-card {
+            background-color: #0056b3;
+            color: #ffffff;
+            border-color: #0056b3;
+        }
+        .nav-card.exam-card:hover {
+            background-color: #003d82;
+            color: #ffffff;
+            border-color: #003d82;
+        }
+        .nav-card span {
+            font-size: 1.4rem;
+        }
+        .nav-card:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid #eaeaea;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>DJJ30293 THERMODYNAMIC</h1>
+        <p>Interactive Engineering Handbook</p>
+    </div>
+
+    <div class="nav-container">
+        <div class="nav-grid">
+            <a href="chapter1.html" class="nav-card">
+                Chapter 1: Fundamental Concepts <span>→</span>
+            </a>
+            <a href="chapter2.html" class="nav-card">
+                Chapter 2: Properties of Pure Substances <span>→</span>
+            </a>
+            <a href="chapter3.html" class="nav-card">
+                Chapter 3: First Law & Processes <span>→</span>
+            </a>
+            <a href="chapter4.html" class="nav-card">
+                Chapter 4: Second Law of Thermodynamics <span>→</span>
+            </a>
+            <a href="mock_exam.html" class="nav-card exam-card">
+                Mock Final Examination Portal (Past Years) <span>→</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        build by Neilson Peter, Politeknik Kota Kinabalu Sabah.
+    </footer>
+
+</body>
+</html>

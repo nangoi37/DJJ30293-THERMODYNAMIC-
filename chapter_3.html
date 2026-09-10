@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3 - DJJ30293 THERMODYNAMIC</title>
+    
+    <script>
+        window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] } };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --accent: #e9ecef; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        .navbar { background: var(--primary); display: flex; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .navbar a { color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
+        .navbar a:hover { background: rgba(255,255,255,0.1); }
+        .navbar a.active { border-bottom: 3px solid #ffd700; background: rgba(255,255,255,0.15); }
+        .container { max-width: 850px; margin: 20px auto; padding: 25px; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; border: 1px solid #eaeaea; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0; border-radius: 8px; background: #000; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        h1 { color: #222; border-bottom: 3px solid var(--primary); padding-bottom: 5px; margin-top: 20px; text-transform: uppercase; }
+        h2 { color: var(--primary); border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 35px; }
+        h3 { color: #444; margin-top: 25px; border-left: 4px solid var(--primary); padding-left: 10px; background: #f8f9fa; padding: 4px 10px;}
+        p { text-align: justify; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .concept-box { background: var(--accent); border-left: 4px solid var(--primary); padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; overflow-x: auto; font-size: 1.05rem; text-align: center; }
+        .rule-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; font-size: 1.05rem; text-align: center; }
+        .step-box { background: #fdfdfe; border: 1px solid #dee2e6; padding: 15px; margin: 15px 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.04); }
+        .step-box h4 { margin-top: 0; color: var(--primary); font-size: 1.05rem; border-bottom: 1px dashed #ccc; padding-bottom: 5px; }
+        
+        /* Graphics */
+        .img-container { text-align: center; margin: 25px 0; background: white; padding: 30px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow-x: auto; }
+        .img-container svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .img-caption { font-size: 0.9rem; color: #666; margin-top: 15px; font-style: italic; border-top: 1px solid #eee; padding-top: 10px; }
+        
+        .calculator { background: #fff3cd; border: 2px solid #ffc107; padding: 25px; border-radius: 8px; margin: 40px 0; }
+        .calculator h3 { margin-top: 0; border-bottom: 2px solid #e0a800; color: #856404; padding-bottom: 5px; }
+        input, select, button.calc-btn { padding: 12px; margin: 8px 0; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .calc-btn { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.3s; margin-top: 15px; text-transform: uppercase; }
+        .calc-btn:hover { background: #004494; }
+        .solution-step { background: white; padding: 15px; margin-top: 15px; border-radius: 4px; border: 1px dashed #ccc; font-family: monospace; white-space: pre-wrap; font-size: 15px; overflow-x: auto; display: none;}
+        .input-group { display: flex; flex-direction: column; margin-top: 10px; }
+        .input-group label { margin-top: 10px; font-weight: bold; font-size: 0.9rem; color: #555; text-align: left;}
+        
+        /* Quiz Buttons & Modals */
+        .quiz-btn-container { text-align: center; margin: 40px 0 20px 0; border-top: 2px dashed #ddd; padding-top: 30px; }
+        .quiz-btn { background: #28a745; color: white; border: none; font-size: 18px; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .quiz-btn:hover { background: #218838; transform: translateY(-2px); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; border: none; background: none; color: #888; line-height: 1; padding: 0; }
+        .close-btn:hover { color: #333; }
+        .quiz-header { border-bottom: 2px solid var(--primary); margin-bottom: 20px; padding-bottom: 10px; color: var(--primary); text-align: left; }
+        .question-block { margin-bottom: 25px; padding: 18px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #ccc; text-align: left;}
+        .question-text { font-weight: bold; margin-bottom: 12px; font-size: 1.05rem; }
+        .option-label { display: block; margin-bottom: 8px; cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.2s; border: 1px solid transparent; }
+        .option-label:hover { background: #e2e6ea; border: 1px solid #dae0e5; }
+        .option-label input { width: auto; margin-right: 12px; transform: scale(1.2); }
+        .show-how-btn { background: #17a2b8; color: white; border: none; padding: 6px 12px; font-size: 0.85rem; border-radius: 4px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        .hint-box { display: none; background: #e0f7fa; color: #0c5460; padding: 12px; border-radius: 4px; border-left: 4px solid #17a2b8; margin-top: 10px; font-family: monospace; white-space: pre-wrap; }
+        .correct-ans { background-color: #d4edda !important; border: 1px solid #c3e6cb !important; color: #155724; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; border: 1px solid #f5c6cb !important; color: #721c24; text-decoration: line-through; }
+        #quiz-result { text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 25px; padding: 15px; border-radius: 8px; display: none; }
+        #submitQuizBtn { background: var(--primary); color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; width: 100%; text-transform: uppercase;}
+        .cite-hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Unified App Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chapter1.html">Ch 1</a>
+        <a href="chapter2.html">Ch 2</a>
+        <a href="chapter3.html" class="active">Ch 3</a>
+        <a href="chapter4.html" style="border-right: none;">Ch 4</a>
+    </div>
+
+    <div class="container">
+        
+        <h1>Chapter 3: First Law of Thermodynamics & Its Processes</h1>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/HaNF6q5dX3c" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        
+        <h2>3.1 The First Law of Thermodynamics</h2>
+        <p>The first law of thermodynamics, also known as the conservation of energy principle, states that energy can be neither created nor destroyed during a process; it can only change forms. This involves the study of the relationships between various forms of energy through energy interactions.<span class="cite-hidden">[cite: 2]</span></p>
+
+        <h3>Forms of Energy</h3>
+        <p>Energy exists in multiple forms that convert into one another:<span class="cite-hidden">[cite: 2]</span></p>
+        <ul>
+            <li><strong>Kinetic Energy:</strong> Energy of movement.<span class="cite-hidden">[cite: 2]</span></li>
+            <li><strong>Potential Energy:</strong> Stored energy (e.g., Gravitational, Elastic, Chemical, Nuclear).<span class="cite-hidden">[cite: 2]</span></li>
+            <li><strong>Thermal Energy:</strong> Energy of moving particles (heat).<span class="cite-hidden">[cite: 2]</span></li>
+            <li><strong>Mechanical & Electrical Energy:</strong> Energy of objects in motion and particles moving through a wire.<span class="cite-hidden">[cite: 2]</span></li>
+        </ul>
+
+        <h2>3.2 Energy Balance of a System</h2>
+        <p>The net change (increase or decrease) in the total energy of the system during a process is equal to the difference between the total energy entering and the total energy leaving the system.<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="concept-box">
+            $$E_{\text{in}} - E_{\text{out}} = \Delta E_{\text{system}}$$
+        </div>
+        <p>Mechanisms of Energy Transfer include:<span class="cite-hidden">[cite: 2]</span></p>
+        <ul>
+            <li><strong>Heat Transfer ($Q$):</strong> $Q_{\text{in}}$ (into system) and $Q_{\text{out}}$ (out from system).<span class="cite-hidden">[cite: 2]</span></li>
+            <li><strong>Work Transfer ($W$):</strong> $W_{\text{in}}$ (done on system) and $W_{\text{out}}$ (done by system).<span class="cite-hidden">[cite: 2]</span></li>
+            <li><strong>Mass Flow ($m$):</strong> $m_{\text{in}}$ (entering system) and $m_{\text{out}}$ (leaving system).<span class="cite-hidden">[cite: 2]</span></li>
+        </ul>
+
+        <div class="rule-box">
+            <strong>Stationary Systems:</strong><br>
+            A closed system whose velocity and elevation of the center of gravity remain constant during a process.<span class="cite-hidden">[cite: 2]</span><br>
+            Since $z_1 = z_2 \rightarrow \Delta PE = 0$, and $V_1 = V_2 \rightarrow \Delta KE = 0$.<span class="cite-hidden">[cite: 2]</span><br>
+            Therefore, <strong>$\Delta E = \Delta U$</strong>.<span class="cite-hidden">[cite: 2]</span>
+        </div>
+
+        <h2>3.3 Closed Systems (Non-Flow Processes)</h2>
+        <p>Any process undergone by a closed system is referred to as a non-flow process. A closed system involves only heat transfer and work transfer, with no mass flow across the boundary. The Non-Flow Energy Equation is:<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="concept-box">
+            $$Q_{\text{net, in}} - W_{\text{net, out}} = U_2 - U_1$$
+        </div>
+
+        <h3>The Five Non-Flow Processes</h3>
+        <p>These processes define how an ideal gas behaves when enclosed in a piston-cylinder without mass escaping:<span class="cite-hidden">[cite: 2]</span></p>
+
+        <div class="img-container">
+            <svg viewBox="-20 -20 650 450" xmlns="http://www.w3.org/2000/svg">
+                <!-- Axes -->
+                <line x1="80" y1="350" x2="600" y2="350" stroke="#333" stroke-width="3" />
+                <line x1="80" y1="350" x2="80" y2="50" stroke="#333" stroke-width="3" />
+                <text x="610" y="360" font-family="sans-serif" font-weight="bold" font-size="18">V</text>
+                <text x="50" y="50" font-family="sans-serif" font-weight="bold" font-size="18">P</text>
+
+                <!-- Common Start Point -->
+                <circle cx="150" cy="120" r="6" fill="#333" />
+                
+                <!-- 1. Isobaric -->
+                <path d="M 150 120 L 500 120" fill="none" stroke="#0056b3" stroke-width="4" />
+                <text x="515" y="115" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0056b3">Constant Pressure</text>
+                <text x="515" y="135" font-family="sans-serif" font-size="13" fill="#0056b3">P V<tspan baseline-shift="super" font-size="9">0</tspan> = c</text>
+
+                <!-- 2. Isothermal -->
+                <path d="M 150 120 Q 250 250 480 260" fill="none" stroke="#28a745" stroke-width="4" />
+                <text x="495" y="255" font-family="sans-serif" font-size="13" font-weight="bold" fill="#28a745">Constant Temp.</text>
+                <text x="495" y="275" font-family="sans-serif" font-size="13" fill="#28a745">P V<tspan baseline-shift="super" font-size="9">1</tspan> = c</text>
+
+                <!-- 3. Polytropic -->
+                <path d="M 150 120 Q 220 270 420 310" fill="none" stroke="#e0a800" stroke-width="4" />
+                <text x="430" y="295" font-family="sans-serif" font-size="13" font-weight="bold" fill="#e0a800">Polytropic</text>
+                <text x="430" y="315" font-family="sans-serif" font-size="13" fill="#e0a800">P V<tspan baseline-shift="super" font-size="9">n</tspan> = c</text>
+
+                <!-- 4. Adiabatic -->
+                <path d="M 150 120 Q 200 280 340 330" fill="none" stroke="#d9534f" stroke-width="4" />
+                <text x="350" y="325" font-family="sans-serif" font-size="13" font-weight="bold" fill="#d9534f">Adiabatic</text>
+                <text x="350" y="345" font-family="sans-serif" font-size="13" fill="#d9534f">P V<tspan baseline-shift="super" font-size="9">γ</tspan> = c</text>
+
+                <!-- 5. Isochoric -->
+                <path d="M 150 120 L 150 350" fill="none" stroke="#6c757d" stroke-width="4" />
+                <text x="160" y="375" font-family="sans-serif" font-size="13" font-weight="bold" fill="#6c757d">Constant Volume</text>
+            </svg>
+            <div class="img-caption">Figure 3.1: The Five Non-Flow Thermodynamic Processes.</div>
+        </div>
+
+        <p><strong>1. Polytropic Process ($PV^n = C$):</strong> A general process where both heat and work cross the boundary. Most actual compressions (e.g., in air compressors and IC engines) fall between isothermal and isentropic conditions and are therefore polytropic.<span class="cite-hidden">[cite: 2]</span><br>
+        $W = \frac{P_1 V_1 - P_2 V_2}{n - 1} = \frac{mR(T_1 - T_2)}{n - 1}$<br>
+        $Q = \left(\frac{\gamma - n}{\gamma - 1}\right) W$</p>
+
+        <div class="step-box">
+            <h4>Example: Polytropic Expansion</h4>
+            <p>The combustion gases in a petrol engine are at 30 bar and 800°C before expansion. The gases expand through a volume ratio of 8.5 to occupy 510 cm³. The polytropic index n = 1.15.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            Using $P_1 V_1^n = P_2 V_2^n$, we rearrange for $P_2 = P_1 (V_1/V_2)^n$.<br>
+            $P_2 = 30 \times (1 / 8.5)^{1.15} = 2.58 \text{ bar}$.<span class="cite-hidden">[cite: 2]</span><br>
+            For temperature, $T_2 / T_1 = (V_1 / V_2)^{n-1}$.<br>
+            $T_2 = 1073 \times (1 / 8.5)^{0.15} = 801 \text{ K}$ (or 528 °C).<span class="cite-hidden">[cite: 2]</span><br>
+            Work, $W = \frac{P_1 V_1 - P_2 V_2}{n - 1}$. With $V_2 = 510 \text{ cm}^3$ ($0.00051 \text{ m}^3$) and $V_1 = 60 \text{ cm}^3$, $W = 0.528 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <p><strong>2. Isothermal Process ($PV = C$):</strong> Temperature is constant ($T_1 = T_2$). This occurs when compression is carried out slowly, allowing heat to be extracted by cooling water. All heat added is converted into work; internal energy remains constant ($U_2 - U_1 = 0$).<span class="cite-hidden">[cite: 2]</span><br>
+        $W = Q = P_1 V_1 \ln\left(\frac{V_2}{V_1}\right) = P_1 V_1 \ln\left(\frac{P_1}{P_2}\right)$<span class="cite-hidden">[cite: 2]</span></p>
+
+        <div class="step-box">
+            <h4>Example: Isothermal Compression</h4>
+            <p>0.4 kg of oxygen ($M=32 \text{ kg/kmol}$) is compressed isothermally from 1.01 bar and 220°C to 5.5 bar.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            Gas constant $R = 8.3144 / 32 = 0.2598 \text{ kJ/kgK}$.<br>
+            Temperature $T = 220 + 273 = 493 \text{ K}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $W = m R T \ln(P_1/P_2) = 0.4 \times 0.2598 \times 493 \times \ln(1.01 / 5.5) = -86.7 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span><br>
+            Since process is isothermal, $dU = 0$, so $Q = W = -86.7 \text{ kJ}$ (Heat is rejected).<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <p><strong>3. Adiabatic Process ($PV^\gamma = C$):</strong> A thermally insulated system where negligible heat transfer occurs ($Q = 0$). For example, the outer casings of steam engines, steam turbines, and gas turbines are well insulated so fluid expansion is assumed adiabatic. This occurs if compression is very rapid.<span class="cite-hidden">[cite: 2]</span><br>
+        $W = \frac{P_1 V_1 - P_2 V_2}{\gamma - 1} = \frac{mR(T_1 - T_2)}{\gamma - 1}$<span class="cite-hidden">[cite: 2]</span></p>
+
+        <div class="step-box">
+            <h4>Example: Adiabatic Compression</h4>
+            <p>In an insulated air compressor, air at 0.98 bar and 20°C is compressed to 1/6 of its original volume. Mass is 0.05 kg, $\gamma = 1.4$, and $C_v = 0.718 \text{ kJ/kgK}$.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $T_2 = T_1 \times (V_1/V_2)^{\gamma-1} = 293 \times (6)^{0.4} = 600 \text{ K}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $P_2 = P_1 \times (V_1/V_2)^\gamma = 0.98 \times (6)^{1.4} = 12.04 \text{ bar}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $W = m C_v (T_1 - T_2) = 0.05 \times 0.718 \times (293 - 600) = -11.02 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <p><strong>4. Isobaric Process ($P_1 = P_2$):</strong> Pressure remains constant. For example, heating water in a cylinder where the load/weight on the piston is kept constant.<span class="cite-hidden">[cite: 2]</span><br>
+        $W = P(V_2 - V_1)$ and $Q = m C_p (T_2 - T_1) = m(h_2 - h_1)$<span class="cite-hidden">[cite: 2]</span></p>
+
+        <div class="step-box">
+            <h4>Example: Isobaric Expansion</h4>
+            <p>2.25 kg of fluid expands from 0.1 m³ to 0.2 m³ at a constant 7 bar. Initial and final enthalpies are 210 kJ/kg and 280 kJ/kg.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $Q = m(h_2 - h_1) = 2.25 \times (280 - 210) = 157.5 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $W = P(V_2 - V_1) = 700 \text{ kPa} \times (0.2 - 0.1) = 70 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $\Delta U = Q - W = 157.5 - 70 = 87.5 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <p><strong>5. Isometric/Isochoric Process ($V_1 = V_2$):</strong> Volume remains constant. For example, heating an aerosol can or a rigid walled vessel.<span class="cite-hidden">[cite: 2]</span><br>
+        $W = 0$ and $Q = U_2 - U_1 = m C_v (T_2 - T_1)$<span class="cite-hidden">[cite: 2]</span></p>
+
+        <div class="step-box">
+            <h4>Example: Isochoric Heating</h4>
+            <p>Specific internal energy of 2 kg of fluid increases from 120 kJ/kg to 180 kJ/kg during constant volume process. Find heat required.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            Since $W = 0$, the first law is $Q = \Delta U$.<span class="cite-hidden">[cite: 2]</span><br>
+            $Q = m(u_2 - u_1) = 2 \times (180 - 120) = 120 \text{ kJ}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <h2>3.4 Open Systems (Flow Processes)</h2>
+        <p>In an open system, energy transfers take place across the boundary, and fluid also crosses the boundary.<span class="cite-hidden">[cite: 2]</span></p>
+        
+        <h3>Equation of Continuity</h3>
+        <p>If a system is in a steady state, the mass of fluid passing any section during a specified time must be constant.<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="concept-box">
+            $$\dot{m} = \frac{A_1 C_1}{v_1} = \frac{A_2 C_2}{v_2}$$
+        </div>
+
+        <h3>The Steady Flow Energy Equation (SFEE)</h3>
+        <p>For a steady flow, the properties of the fluid at any section must be constant with respect to time. The general equation in units of kW (kJ/s) is:<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="rule-box">
+            $$Q - W = \dot{m} \left[ (h_2 - h_1) + \frac{C_2^2 - C_1^2}{2} + g(Z_2 - Z_1) \right]$$
+        </div>
+
+        <h2>3.5 Steady Flow Engineering Devices</h2>
+        
+        <h3>1. Turbine</h3>
+        <p>A turbine utilizes a pressure drop to produce work energy to drive an external load. Fluid passes quickly, so heat transfer is negligible ($Q=0$). Potential and kinetic energy changes are normally small enough to be neglected.<span class="cite-hidden">[cite: 2]</span><br>
+        SFEE reduces to: $-W = \dot{m}(h_2 - h_1)$.<span class="cite-hidden">[cite: 2]</span></p>
+        
+        <div class="img-container">
+            <!-- Massively expanded Viewbox for Turbine to prevent any clipping -->
+            <svg viewBox="-100 -50 700 250" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowBlue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0056b3" /></marker>
+                    <marker id="arrowRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d9534f" /></marker>
+                </defs>
+                <polygon points="100,20 280,50 280,140 100,170" fill="#e2e3e5" stroke="#333" stroke-width="4" stroke-dasharray="8,4"/>
+                <text x="190" y="105" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">TURBINE</text>
+                
+                <!-- Fluid In -->
+                <path d="M -50 95 L 80 95" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="15" y="80" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid In</text>
+                
+                <!-- Shaft/Hub -->
+                <rect x="280" y="70" width="50" height="50" fill="#888" />
+                
+                <!-- Fluid Out (Upper track) -->
+                <path d="M 330 80 L 450 80" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="390" y="70" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid Out</text>
+                
+                <!-- Work Out (Lower track) -->
+                <path d="M 330 110 L 450 110" stroke="#d9534f" stroke-width="8" marker-end="url(#arrowRed)"/>
+                <text x="390" y="140" font-family="sans-serif" font-weight="bold" font-size="20" fill="#d9534f" text-anchor="middle">W out</text>
+            </svg>
+            <div class="img-caption">Figure 3.2: Control volume diagram for a Turbine.</div>
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Turbine Power</h4>
+            <p>Fluid flows at 45 kg/min. Specific enthalpy drop is 580 kJ/kg, and turbine loses 2100 kJ/min as heat. Determine power ($W$).<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $\dot{m} = 45 / 60 = 0.75 \text{ kg/s}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $\dot{Q}_{\text{loss}} = -2100 / 60 = -35 \text{ kW}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $Q - W = \dot{m}(h_2 - h_1) \rightarrow -35 - W = 0.75 \times (-580)$.<span class="cite-hidden">[cite: 2]</span><br>
+            $W = 435 - 35 = 400 \text{ kW}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <h3>2. Boiler</h3>
+        <p>Water is pumped in and steam leaves at the same rate. Heat is supplied from a furnace. No moving parts ($W=0$). Kinetic and potential energy are neglected.<span class="cite-hidden">[cite: 2]</span><br>
+        SFEE reduces to: $Q = \dot{m}(h_2 - h_1)$.<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="img-container">
+            <!-- Expanded Viewbox for Boiler -->
+            <svg viewBox="-50 -50 500 350" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="100" r="70" fill="#e2e3e5" stroke="#333" stroke-width="4" stroke-dasharray="8,4"/>
+                <text x="200" y="105" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">BOILER</text>
+                
+                <!-- Fluid In -->
+                <path d="M 20 100 L 110 100" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="65" y="85" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid In</text>
+                
+                <!-- Fluid Out -->
+                <path d="M 290 100 L 380 100" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="335" y="85" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid Out</text>
+                
+                <!-- Heat In -->
+                <path d="M 200 240 L 200 190" stroke="#d9534f" stroke-width="8" marker-end="url(#arrowRed)"/>
+                <text x="200" y="270" font-family="sans-serif" font-weight="bold" font-size="20" fill="#d9534f" text-anchor="middle">Q in</text>
+            </svg>
+        </div>
+        <div class="step-box">
+            <h4>Example: Boiler Heat Supply</h4>
+            <p>Boiler evaporates 1000 kg/h. Inlet enthalpy = 165 kJ/kg, outlet enthalpy = 2200 kJ/kg. Find heat supplied.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $Q = \dot{m}(h_2 - h_1)$.<span class="cite-hidden">[cite: 2]</span><br>
+            $Q = 1000 \times (2200 - 165) = 2,035,000 \text{ kJ/h}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <h3>3. Nozzle</h3>
+        <p>A nozzle utilizes a pressure drop to produce an increase in kinetic energy. Fluid spends short time inside ($Q=0$). No moving parts ($W=0$). Potential energy neglected.<span class="cite-hidden">[cite: 2]</span><br>
+        SFEE reduces to: $C_2 = \sqrt{2(h_1 - h_2)}$ (assuming $C_1$ is negligible).<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="img-container">
+            <svg viewBox="-20 -50 450 200" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="100,20 260,50 260,100 100,130" fill="#e2e3e5" stroke="#333" stroke-width="4" stroke-dasharray="8,4"/>
+                <text x="180" y="80" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">NOZZLE</text>
+                
+                <path d="M -10 75 L 80 75" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="30" y="60" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3" text-anchor="middle">Fluid In</text>
+                
+                <path d="M 280 75 L 360 75" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="320" y="60" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3" text-anchor="middle">Fluid Out</text>
+            </svg>
+        </div>
+        <div class="step-box">
+            <h4>Example: Nozzle Exit Area</h4>
+            <p>Fluid with $h_1 = 2800 \text{ kJ/kg}$ enters horizontally with negligible velocity at 14 kg/s. At outlet, $h_2 = 2250 \text{ kJ/kg}$ and $v_2 = 1.25 \text{ m}^3/\text{kg}$. Determine outlet area.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $C_2 = \sqrt{2 \times (h_1 - h_2) \times 1000} = \sqrt{2 \times (2800 - 2250) \times 1000} = 1048.8 \text{ m/s}$.<span class="cite-hidden">[cite: 2]</span><br>
+            From continuity equation, $A_2 = \frac{\dot{m} v_2}{C_2} = \frac{14 \times 1.25}{1048.8} = 0.01668 \text{ m}^2$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <h3>4. Condenser</h3>
+        <p>Reverse of a boiler; removes heat to condense vapor. No work ($W=0$), neglected kinetic/potential energy.<span class="cite-hidden">[cite: 2]</span><br>
+        SFEE reduces to: $Q = \dot{m}(h_2 - h_1)$.<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="img-container">
+            <!-- Expanded Viewbox for Condenser -->
+            <svg viewBox="-50 -100 600 350" xmlns="http://www.w3.org/2000/svg">
+                <rect x="150" y="50" width="200" height="100" fill="#e2e3e5" stroke="#333" stroke-width="4" stroke-dasharray="8,4"/>
+                <text x="250" y="105" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">CONDENSER</text>
+                
+                <!-- Fluid In -->
+                <path d="M 250 -30 L 250 30" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="310" y="10" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid In</text>
+                
+                <!-- Fluid Out -->
+                <path d="M 250 170 L 250 230" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="320" y="215" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid Out</text>
+                
+                <!-- Heat Out -->
+                <path d="M 370 100 L 470 100" stroke="#d9534f" stroke-width="8" marker-end="url(#arrowRed)"/>
+                <text x="510" y="105" font-family="sans-serif" font-weight="bold" font-size="20" fill="#d9534f" text-anchor="middle">Q out</text>
+            </svg>
+        </div>
+        <div class="step-box">
+            <h4>Example: Condenser Heat Loss</h4>
+            <p>Fluid enters at 35 kg/min with $h_1 = 2200 \text{ kJ/kg}$ and leaves with $h_2 = 255 \text{ kJ/kg}$. Find heat energy loss.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $Q = \dot{m}(h_2 - h_1) = 35 \times (255 - 2200) = -68,075 \text{ kJ/min}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <h3>5. Throttle (Valve)</h3>
+        <p>Fluid flows through a restriction causing a large pressure drop over a small distance. Insufficient area for heat loss ($Q=0$), no moving parts ($W=0$), neglected kinetic/potential energy.<span class="cite-hidden">[cite: 2]</span><br>
+        SFEE reduces to: $h_1 = h_2$ (Isenthalpic process).<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="img-container">
+            <svg viewBox="-50 -50 450 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 100 50 L 160 50 L 160 65 L 200 65 L 200 50 L 260 50" fill="none" stroke="#333" stroke-width="4"/>
+                <path d="M 100 100 L 160 100 L 160 85 L 200 85 L 200 100 L 260 100" fill="none" stroke="#333" stroke-width="4"/>
+                <rect x="175" y="20" width="10" height="40" fill="#999" stroke="#333" stroke-width="2"/>
+                <line x1="160" y1="20" x2="200" y2="20" stroke="#333" stroke-width="4"/>
+                
+                <path d="M 0 75 Q 100 75 120 90 T 240 75" fill="none" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="50" y="60" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3" text-anchor="middle">Fluid In</text>
+                <text x="300" y="60" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3" text-anchor="middle">Fluid Out</text>
+                <text x="180" y="10" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle">VALVE</text>
+            </svg>
+        </div>
+        <div class="step-box">
+            <h4>Example: Throttling Process</h4>
+            <p>Fluid throttled from 10 bar to 1 bar. Specific volume changes from $0.3 \text{ m}^3/\text{kg}$ to $1.8 \text{ m}^3/\text{kg}$. Determine change in internal energy.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $h_1 = h_2 \rightarrow u_1 + P_1 v_1 = u_2 + P_2 v_2$.<br>
+            $u_2 - u_1 = P_1 v_1 - P_2 v_2 = (1000 \times 0.3) - (100 \times 1.8) = 300 - 180 = 120 \text{ kJ/kg}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <h3>6. Pump</h3>
+        <p>The action of a pump is the reverse of a turbine; it uses external work energy to produce a pressure rise. $Q=0$, neglected kinetic/potential energy.<span class="cite-hidden">[cite: 2]</span><br>
+        SFEE reduces to: $-W = \dot{m}(h_2 - h_1)$. Since $h_2 > h_1$, $W$ is negative.<span class="cite-hidden">[cite: 2]</span></p>
+        <div class="img-container">
+            <!-- Expanded Viewbox for Pump -->
+            <svg viewBox="-50 -50 500 350" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="100" r="70" fill="#e2e3e5" stroke="#333" stroke-width="4" stroke-dasharray="8,4"/>
+                <text x="200" y="105" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">PUMP</text>
+                
+                <!-- Fluid In -->
+                <path d="M 20 100 L 110 100" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="65" y="85" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid In</text>
+                
+                <!-- Fluid Out -->
+                <path d="M 290 100 L 380 100" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <text x="335" y="85" font-family="sans-serif" font-weight="bold" font-size="18" fill="#0056b3" text-anchor="middle">Fluid Out</text>
+                
+                <!-- Work In -->
+                <path d="M 200 240 L 200 190" stroke="#d9534f" stroke-width="8" marker-end="url(#arrowRed)"/>
+                <text x="200" y="270" font-family="sans-serif" font-weight="bold" font-size="20" fill="#d9534f" text-anchor="middle">W in</text>
+            </svg>
+        </div>
+        <div class="step-box">
+            <h4>Example: Pump Power</h4>
+            <p>Pump delivers 45 kg/min. Inlet $h_1 = 46 \text{ kJ/kg}$, outlet $h_2 = 175 \text{ kJ/kg}$. Heat lost = 105 kJ/min. Drive efficiency = 85%. Find drive power.<span class="cite-hidden">[cite: 2]</span></p>
+            <p><strong>Solution:</strong><br>
+            $\dot{m} = 45 / 60 = 0.75 \text{ kg/s}$. $\dot{Q}_{\text{loss}} = -105 / 60 = -1.75 \text{ kW}$.<span class="cite-hidden">[cite: 2]</span><br>
+            $Q - W = \dot{m}(h_2 - h_1) \rightarrow -1.75 - W = 0.75(175 - 46) = 96.75$.<br>
+            $W = -98.5 \text{ kW}$ (Work done ON fluid).<span class="cite-hidden">[cite: 2]</span><br>
+            Power required = $98.5 / 0.85 = 115.88 \text{ kW}$.<span class="cite-hidden">[cite: 2]</span></p>
+        </div>
+
+        <!-- Interactive Calculator Section -->
+        <div class="calculator">
+            <h3>Interactive App Tool: Open & Closed System Solvers</h3>
+            <p>Select the problem type and input your known variables to calculate the thermodynamic properties step-by-step.</p>
+            
+            <select id="calcType" onchange="updateInputs()">
+                <option value="polytropic_w">Closed System: Polytropic Work (W)</option>
+                <option value="isothermal_w">Closed System: Isothermal Work (W)</option>
+                <option value="continuity">Open System: Mass Flow Rate (ṁ)</option>
+                <option value="turbine_w">Open System: Turbine Power Output (W)</option>
+                <option value="nozzle_c2">Open System: Nozzle Exit Velocity (C₂)</option>
+            </select>
+            
+            <div id="dynamic-inputs">
+                <!-- Inputs injected via JS -->
+            </div>
+            
+            <button class="calc-btn" onclick="solveProblem()">Calculate Step-by-Step</button>
+
+            <div id="solutionOutput" class="solution-step" style="display:none;"></div>
+        </div>
+
+        <!-- PRACTICE QUIZ SECTION -->
+        <div class="quiz-btn-container">
+            <button class="quiz-btn" onclick="openQuiz()">Take Chapter 3 Practice Quiz</button>
+            <p style="margin-top: 10px; color: #555; font-size: 0.95rem;">Test your knowledge on SFEE, non-flow processes, and device calculations using examples from the lecture slides.</p>
+        </div>
+
+    </div>
+
+    <!-- QUIZ MODAL -->
+    <div id="quizModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeQuiz()">&times;</button>
+            <h2 class="quiz-header">Chapter 3 Practice Quiz</h2>
+            <div id="quiz-container">
+                <!-- Quiz questions injected here -->
+            </div>
+            <button id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Calculator Logic ---
+        function updateInputs() {
+            const type = document.getElementById('calcType').value;
+            const container = document.getElementById('dynamic-inputs');
+            container.innerHTML = '';
+            
+            if(type === 'polytropic_w') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Initial Pressure, P₁ (kN/m²):</label>
+                        <input type="number" id="input_P1" placeholder="e.g. 3000">
+                        <label>Initial Volume, V₁ (m³):</label>
+                        <input type="number" id="input_V1" placeholder="e.g. 0.05">
+                        <label>Final Volume, V₂ (m³):</label>
+                        <input type="number" id="input_V2" placeholder="e.g. 0.425">
+                        <label>Polytropic Exponent, n:</label>
+                        <input type="number" id="input_n" placeholder="e.g. 1.15">
+                    </div>
+                `;
+            } else if (type === 'isothermal_w') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Initial Pressure, P₁ (kN/m²):</label>
+                        <input type="number" id="input_P1" placeholder="e.g. 2000">
+                        <label>Initial Volume, V₁ (m³):</label>
+                        <input type="number" id="input_V1" placeholder="e.g. 0.0756">
+                        <label>Final Pressure, P₂ (kN/m²):</label>
+                        <input type="number" id="input_P2" placeholder="e.g. 140">
+                    </div>
+                `;
+            } else if (type === 'continuity') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Area, A (m²):</label>
+                        <input type="number" id="input_A" placeholder="e.g. 0.01668">
+                        <label>Velocity, C (m/s):</label>
+                        <input type="number" id="input_C" placeholder="e.g. 1048.8">
+                        <label>Specific Volume, v (m³/kg):</label>
+                        <input type="number" id="input_v" placeholder="e.g. 1.25">
+                    </div>
+                `;
+            } else if (type === 'turbine_w') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Mass Flow Rate, ṁ (kg/s):</label>
+                        <input type="number" id="input_m" placeholder="e.g. 0.75">
+                        <label>Enthalpy Drop, (h₁ - h₂) in kJ/kg:</label>
+                        <input type="number" id="input_dh" placeholder="e.g. 580">
+                        <label>Heat Loss, Q_loss (kW):</label>
+                        <input type="number" id="input_Q" placeholder="e.g. 35">
+                    </div>
+                `;
+            } else if (type === 'nozzle_c2') {
+                container.innerHTML = `
+                    <div class="input-group">
+                        <label>Initial Enthalpy, h₁ (kJ/kg):</label>
+                        <input type="number" id="input_h1" placeholder="e.g. 2800">
+                        <label>Final Enthalpy, h₂ (kJ/kg):</label>
+                        <input type="number" id="input_h2" placeholder="e.g. 2250">
+                    </div>
+                `;
+            }
+        }
+
+        updateInputs();
+
+        function solveProblem() {
+            const type = document.getElementById('calcType').value;
+            const output = document.getElementById('solutionOutput');
+            let steps = "";
+            
+            if (type === 'polytropic_w') {
+                const P1 = parseFloat(document.getElementById('input_P1').value);
+                const V1 = parseFloat(document.getElementById('input_V1').value);
+                const V2 = parseFloat(document.getElementById('input_V2').value);
+                const n = parseFloat(document.getElementById('input_n').value);
+                if(isNaN(P1) || isNaN(V1) || isNaN(V2) || isNaN(n)) return alert("Enter valid numbers");
+                
+                const P2 = P1 * Math.pow((V1 / V2), n);
+                const W = (P1 * V1 - P2 * V2) / (n - 1);
+                
+                steps = `Objective: Calculate Polytropic Work\n\n`;
+                steps += `Step 1: Calculate Final Pressure (P₂) using P₁V₁ⁿ = P₂V₂ⁿ.\n  P₂ = ${P1} * (${V1} / ${V2})^${n}\n  P₂ = ${P2.toFixed(2)} kN/m²\n\n`;
+                steps += `Step 2: Use Polytropic Work Formula W = (P₁V₁ - P₂V₂) / (n - 1).\n  W = ((${P1} * ${V1}) - (${P2.toFixed(2)} * ${V2})) / (${n} - 1)\n  W = (${(P1*V1).toFixed(2)} - ${(P2*V2).toFixed(2)}) / ${(n-1).toFixed(2)}\n\n`;
+                steps += `Step 3: Final Result.\n  W = ${W.toFixed(2)} kJ`;
+            } 
+            else if (type === 'isothermal_w') {
+                const P1 = parseFloat(document.getElementById('input_P1').value);
+                const V1 = parseFloat(document.getElementById('input_V1').value);
+                const P2 = parseFloat(document.getElementById('input_P2').value);
+                if(isNaN(P1) || isNaN(V1) || isNaN(P2)) return alert("Enter valid numbers");
+                
+                const W = P1 * V1 * Math.log(P1 / P2);
+                
+                steps = `Objective: Calculate Isothermal Work\n\n`;
+                steps += `Step 1: State the Isothermal Work Equation.\n  W = P₁ V₁ ln(P₁ / P₂)\n\n`;
+                steps += `Step 2: Plug in known variables.\n  W = ${P1} * ${V1} * ln(${P1} / ${P2})\n  W = ${(P1*V1).toFixed(2)} * ln(${(P1/P2).toFixed(4)})\n\n`;
+                steps += `Step 3: Calculate the final result.\n  W = ${W.toFixed(2)} kJ`;
+            }
+            else if (type === 'continuity') {
+                const A = parseFloat(document.getElementById('input_A').value);
+                const C = parseFloat(document.getElementById('input_C').value);
+                const v = parseFloat(document.getElementById('input_v').value);
+                if(isNaN(A) || isNaN(C) || isNaN(v)) return alert("Enter valid numbers");
+                
+                const m = (A * C) / v;
+                
+                steps = `Objective: Calculate Mass Flow Rate (ṁ) using Continuity Equation\n\n`;
+                steps += `Step 1: State the Continuity Equation.\n  ṁ = (A * C) / v\n\n`;
+                steps += `Step 2: Plug in known variables.\n  ṁ = (${A} * ${C}) / ${v}\n\n`;
+                steps += `Step 3: Calculate the final result.\n  ṁ = ${m.toFixed(4)} kg/s`;
+            }
+            else if (type === 'turbine_w') {
+                const m = parseFloat(document.getElementById('input_m').value);
+                const dh = parseFloat(document.getElementById('input_dh').value);
+                const Q_loss = parseFloat(document.getElementById('input_Q').value);
+                if(isNaN(m) || isNaN(dh) || isNaN(Q_loss)) return alert("Enter valid numbers");
+                
+                const W = (m * dh) - Q_loss;
+                
+                steps = `Objective: Calculate Turbine Power Output\n\n`;
+                steps += `Step 1: State the Steady Flow Energy Equation for a Turbine (with heat loss).\n  Q - W = ṁ(h₂ - h₁)  =>  -Q_loss - W = ṁ(-Δh)\n  Rearranged: W = ṁ(Δh) - Q_loss\n\n`;
+                steps += `Step 2: Plug in known variables.\n  W = (${m} kg/s * ${dh} kJ/kg) - ${Q_loss} kW\n\n`;
+                steps += `Step 3: Calculate the final result.\n  W = ${(m*dh).toFixed(2)} - ${Q_loss}\n  W = ${W.toFixed(2)} kW`;
+            }
+            else if (type === 'nozzle_c2') {
+                const h1 = parseFloat(document.getElementById('input_h1').value);
+                const h2 = parseFloat(document.getElementById('input_h2').value);
+                if(isNaN(h1) || isNaN(h2)) return alert("Enter valid numbers");
+                
+                const C2 = Math.sqrt(2 * (h1 - h2) * 1000);
+                
+                steps = `Objective: Calculate Nozzle Exit Velocity (C₂)\n\n`;
+                steps += `Step 1: State the Nozzle SFEE Equation (assuming C₁ ≈ 0).\n  C₂ = √(2 * (h₁ - h₂))\n  Note: Multiply by 1000 to convert kJ to J/kg to obtain m/s.\n\n`;
+                steps += `Step 2: Plug in known variables.\n  C₂ = √(2 * (${h1} - ${h2}) * 1000)\n\n`;
+                steps += `Step 3: Calculate the final result.\n  C₂ = √(2 * ${h1 - h2} * 1000)\n  C₂ = ${C2.toFixed(2)} m/s`;
+            }
+
+            output.style.display = 'block';
+            output.innerHTML = steps;
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise([output]).catch((err) => console.log(err.message));
+            }
+        }
+
+        // --- Quiz Logic ---
+        const quizData = [
+            { q: "1. The First Law of Thermodynamics is also known as:", options: ["The Continuity Equation", "The Conservation of Mass", "The Conservation of Energy", "The Law of Entropy"], ans: 2, hint: "Review section 3.1: The first law states that energy can be neither created nor destroyed, only change forms." },
+            { q: "2. For a stationary closed system, the changes in potential and kinetic energy are zero. Therefore, the change in total energy (ΔE) equals:", options: ["ΔH (Enthalpy)", "ΔU (Internal Energy)", "Q (Heat)", "W (Work)"], ans: 1, hint: "If ΔPE = 0 and ΔKE = 0, the equation ΔE = ΔU + ΔPE + ΔKE reduces directly to ΔE = ΔU." },
+            { q: "3. In a Polytropic Process (PVⁿ = C), if the index n = 1, the process is called:", options: ["Isobaric", "Isochoric", "Adiabatic", "Isothermal"], ans: 3, hint: "When n = 1, PV = C. According to Boyle's law, this means the temperature remains constant." },
+            { q: "4. During an Isometric (Isochoric) process, the volume remains constant. How much work is done?", options: ["W = P(V₂ - V₁)", "W = mRT", "W = 0", "W = Q"], ans: 2, hint: "Work requires a change in volume (dW = P dV). Since volume is constant (dV = 0), Work (W) is 0." },
+            { q: "5. Practice 1.1: 1.0 kg of gas at 527°C (800 K) and 20 bar expands ISOTHERMALLY to a pressure of 1.4 bar. If initial volume V₁ is 0.0756 m³, what is the final volume V₂?", options: ["0.540 m³", "1.080 m³", "1.890 m³", "2.160 m³"], ans: 1, hint: "For an isothermal process, P₁*V₁ = P₂*V₂.\nV₂ = V₁ * (P₁ / P₂) = 0.0756 * (20 / 1.4) = 1.08 m³." },
+            { q: "6. Practice 2.1: 0.112 m³ of gas at 138 kN/m² is compressed to 690 kN/m² according to the law PV¹·⁴ = C. What is the new volume (V₂)?", options: ["0.015 m³", "0.035 m³", "0.070 m³", "0.560 m³"], ans: 1, hint: "P₁*(V₁^1.4) = P₂*(V₂^1.4).\nV₂ = V₁ * (P₁/P₂)^(1/1.4)\nV₂ = 0.112 * (138/690)^0.714 = 0.112 * (0.2)^0.714 = 0.035 m³." },
+            { q: "7. Which of the following is true for an Adiabatic process?", options: ["Temperature is constant", "Pressure is constant", "Heat transfer (Q) is zero", "Work (W) is zero"], ans: 2, hint: "An adiabatic process occurs in a thermally insulated system, meaning no heat flows in or out (Q = 0)." },
+            { q: "8. The Steady Flow Energy Equation (SFEE) applies to open systems. What does 'ṁ' represent in this equation?", options: ["Molar mass", "Mass flow rate (kg/s)", "Mechanical work", "Internal energy"], ans: 1, hint: "The dot over the 'm' signifies a rate with respect to time, specifically the Mass Flow Rate (kg/s)." },
+            { q: "9. Practice 4: A fluid flows through a turbine at 45 kg/min (0.75 kg/s). The specific enthalpy drop is 580 kJ/kg, and the turbine loses 35 kW (2100 kJ/min) as heat. Determine the power produced (W).", options: ["400 kW", "435 kW", "470 kW", "580 kW"], ans: 0, hint: "SFEE for turbine: Q - W = ṁ(h₂ - h₁).\n-35 kW - W = 0.75 kg/s * (-580 kJ/kg)\n-35 - W = -435\nW = 435 - 35 = 400 kW." },
+            { q: "10. In a Boiler operating under steady conditions, which of the following energy transfers is typically considered to be ZERO?", options: ["Heat (Q)", "Enthalpy change (Δh)", "Mass flow (ṁ)", "Work (W)"], ans: 3, hint: "A boiler has no moving parts capable of producing or absorbing mechanical work, so W = 0." },
+            { q: "11. Boiler Example: A boiler operates steadily evaporating fluid at 1000 kg/h. Enthalpy entering is 165 kJ/kg and leaving is 2200 kJ/kg. What is the heat energy supplied (Q)?", options: ["2,035,000 kJ/h", "2,200,000 kJ/h", "2,365,000 kJ/h", "3,500,000 kJ/h"], ans: 0, hint: "SFEE for Boiler: Q = ṁ(h₂ - h₁)\nQ = 1000 * (2200 - 165) = 1000 * 2035 = 2,035,000 kJ/h." },
+            { q: "12. What is the primary purpose of a Nozzle?", options: ["To increase pressure", "To produce shaft work", "To utilize a pressure drop to increase kinetic energy (velocity)", "To add heat to a fluid"], ans: 2, hint: "A nozzle forces fluid through a restriction, dropping pressure and drastically increasing its velocity (Kinetic Energy)." },
+            { q: "13. Nozzle Example: Fluid enters a nozzle with h₁ = 2800 kJ/kg (negligible velocity) and exits with h₂ = 2250 kJ/kg. Calculate the exit velocity (C₂) assuming adiabatic flow.", options: ["550 m/s", "825 m/s", "1048.8 m/s", "1210.5 m/s"], ans: 2, hint: "Formula: C₂ = √(2 * (h₁ - h₂) * 1000)\nC₂ = √(2 * (2800 - 2250) * 1000)\nC₂ = √(1,100,000) = 1048.8 m/s." },
+            { q: "14. A throttling process (flowing through a partially opened valve) causes a significant pressure drop. Which property remains constant?", options: ["Volume (v₁ = v₂)", "Enthalpy (h₁ = h₂)", "Pressure (P₁ = P₂)", "Entropy (s₁ = s₂)"], ans: 1, hint: "In throttling, Q=0, W=0, and ΔKE/ΔPE are negligible. The SFEE reduces simply to h₁ = h₂ (Isenthalpic process)." },
+            { q: "15. Throttle Example: A fluid is throttled from 10 bar (1000 kPa) to 1 bar (100 kPa). Specific volumes are v₁ = 0.3 m³/kg and v₂ = 1.8 m³/kg. What is the change in specific internal energy (u₂ - u₁)?", options: ["120 kJ/kg", "180 kJ/kg", "300 kJ/kg", "420 kJ/kg"], ans: 0, hint: "Throttle equation: h₁ = h₂  -->  u₁ + P₁*v₁ = u₂ + P₂*v₂\nu₂ - u₁ = P₁*v₁ - P₂*v₂\nu₂ - u₁ = (1000 * 0.3) - (100 * 1.8) = 300 - 180 = 120 kJ/kg." }
+        ];
+
+        function buildQuiz() {
+            const container = document.getElementById("quiz-container");
+            container.innerHTML = ""; 
+            
+            quizData.forEach((item, index) => {
+                let optionsHtml = "";
+                item.options.forEach((opt, optIndex) => {
+                    optionsHtml += `<label class="option-label" id="label-${index}-${optIndex}"><input type="radio" name="q${index}" value="${optIndex}"> ${opt}</label>`;
+                });
+
+                container.innerHTML += `
+                    <div class="question-block" id="qb-${index}">
+                        <div class="question-text">${item.q}</div>
+                        ${optionsHtml}
+                        <button type="button" class="show-how-btn" onclick="toggleHint(${index})">Show me how</button>
+                        <div id="hint-${index}" class="hint-box">${item.hint}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleHint(index) {
+            const hintBox = document.getElementById(`hint-${index}`);
+            if (hintBox.style.display === "block") {
+                hintBox.style.display = "none";
+            } else {
+                hintBox.style.display = "block";
+            }
+        }
+
+        function openQuiz() {
+            buildQuiz();
+            document.getElementById("quiz-result").style.display = "none";
+            document.getElementById("submitQuizBtn").style.display = "block";
+            document.getElementById("quizModal").style.display = "flex";
+        }
+
+        function closeQuiz() {
+            document.getElementById("quizModal").style.display = "none";
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            
+            quizData.forEach((item, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                const block = document.getElementById(`qb-${index}`);
+                
+                const allLabels = block.querySelectorAll('.option-label');
+                allLabels.forEach(lbl => {
+                    lbl.classList.remove('correct-ans', 'wrong-ans');
+                });
+
+                if (selectedOption) {
+                    const selectedVal = parseInt(selectedOption.value);
+                    if (selectedVal === item.ans) {
+                        score++;
+                        document.getElementById(`label-${index}-${selectedVal}`).classList.add('correct-ans');
+                    } else {
+                        document.getElementById(`label-${index}-${selectedVal}`).classList.add('wrong-ans');
+                        document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans'); 
+                    }
+                } else {
+                    document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans');
+                }
+            });
+
+            const resultDiv = document.getElementById("quiz-result");
+            resultDiv.innerHTML = `You scored ${score} out of 15!`;
+            
+            if (score >= 12) {
+                resultDiv.style.color = "#155724";
+                resultDiv.style.backgroundColor = "#d4edda";
+                resultDiv.style.border = "1px solid #c3e6cb";
+            } else {
+                resultDiv.style.color = "#721c24";
+                resultDiv.style.backgroundColor = "#f8d7da";
+                resultDiv.style.border = "1px solid #f5c6cb";
+            }
+            
+            resultDiv.style.display = "block";
+            document.getElementById("submitQuizBtn").style.display = "none";
+        }
+    </script>
+</body>
+</html>

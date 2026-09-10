@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 - DJJ30293 THERMODYNAMIC</title>
+    
+    <script>
+        window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] } };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --accent: #e9ecef; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        .navbar { background: var(--primary); display: flex; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .navbar a { color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
+        .navbar a:hover { background: rgba(255,255,255,0.1); }
+        .navbar a.active { border-bottom: 3px solid #ffd700; background: rgba(255,255,255,0.15); }
+        .container { max-width: 850px; margin: 20px auto; padding: 25px; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; border: 1px solid #eaeaea; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0; border-radius: 8px; background: #000; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        h1 { color: #222; border-bottom: 3px solid var(--primary); padding-bottom: 5px; margin-top: 20px; text-transform: uppercase; }
+        h2 { color: var(--primary); border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 35px; }
+        h3 { color: #444; margin-top: 25px; border-left: 4px solid var(--primary); padding-left: 10px; background: #f8f9fa; padding-top: 4px; padding-bottom: 4px;}
+        p { text-align: justify; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .concept-box { background: var(--accent); border-left: 4px solid var(--primary); padding: 20px; margin: 15px 0; border-radius: 0 4px 4px 0; overflow-x: auto; text-align: center; font-size: 1.05rem; }
+        .rule-box { background: #d4edda; border-left: 4px solid #28a745; padding: 20px; margin: 15px 0; border-radius: 0 4px 4px 0; text-align: center; font-size: 1.05rem; }
+        .step-box { background: #fdfdfe; border: 1px solid #dee2e6; padding: 15px; margin: 15px 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.04); }
+        .step-box h4 { margin-top: 0; color: var(--primary); font-size: 1.05rem; border-bottom: 1px dashed #ccc; padding-bottom: 5px; }
+        
+        .img-container { text-align: center; margin: 30px 0; background: white; padding: 30px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow-x: auto; }
+        .img-container svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .img-caption { font-size: 0.9rem; color: #666; margin-top: 15px; font-style: italic; border-top: 1px solid #eee; padding-top: 10px; }
+        
+        .calculator { background: #fff3cd; border: 2px solid #ffc107; padding: 25px; border-radius: 8px; margin: 40px 0; }
+        .calculator h3 { margin-top: 0; border-bottom: 2px solid #e0a800; color: #856404; padding-bottom: 5px; }
+        input, select, button.calc-btn { padding: 12px; margin: 8px 0; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .calc-btn { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.3s; margin-top: 15px; text-transform: uppercase; }
+        .calc-btn:hover { background: #004494; }
+        .solution-step { background: white; padding: 15px; margin-top: 15px; border-radius: 4px; border: 1px dashed #ccc; font-family: monospace; white-space: pre-wrap; font-size: 15px; overflow-x: auto; display: none;}
+        .input-group { display: flex; flex-direction: column; margin-top: 10px; }
+        .input-group label { margin-top: 10px; font-weight: bold; font-size: 0.9rem; color: #555; text-align: left; }
+        .quiz-btn-container { text-align: center; margin: 40px 0 20px 0; border-top: 2px dashed #ddd; padding-top: 30px; }
+        .quiz-btn { background: #28a745; color: white; border: none; font-size: 18px; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .quiz-btn:hover { background: #218838; transform: translateY(-2px); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; border: none; background: none; color: #888; line-height: 1; padding: 0; }
+        .close-btn:hover { color: #333; }
+        .quiz-header { border-bottom: 2px solid var(--primary); margin-bottom: 20px; padding-bottom: 10px; color: var(--primary); text-align: left; }
+        .question-block { margin-bottom: 25px; padding: 18px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #ccc; text-align: left;}
+        .question-text { font-weight: bold; margin-bottom: 12px; font-size: 1.05rem; }
+        .option-label { display: block; margin-bottom: 8px; cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.2s; border: 1px solid transparent; }
+        .option-label:hover { background: #e2e6ea; border: 1px solid #dae0e5; }
+        .option-label input { width: auto; margin-right: 12px; transform: scale(1.2); }
+        .show-how-btn { background: #17a2b8; color: white; border: none; padding: 6px 12px; font-size: 0.85rem; border-radius: 4px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        .hint-box { display: none; background: #e0f7fa; color: #0c5460; padding: 12px; border-radius: 4px; border-left: 4px solid #17a2b8; margin-top: 10px; font-family: monospace; white-space: pre-wrap; }
+        .correct-ans { background-color: #d4edda !important; border: 1px solid #c3e6cb !important; color: #155724; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; border: 1px solid #f5c6cb !important; color: #721c24; text-decoration: line-through; }
+        #quiz-result { text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 25px; padding: 15px; border-radius: 8px; display: none; }
+        #submitQuizBtn { background: var(--primary); color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; width: 100%; text-transform: uppercase;}
+        .cite-hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chapter1.html">Ch 1</a>
+        <a href="chapter2.html">Ch 2</a>
+        <a href="chapter3.html">Ch 3</a>
+        <a href="chapter4.html" class="active" style="border-right: none;">Ch 4</a>
+    </div>
+
+    <div class="container">
+        
+        <h1>Chapter 4: Second Law of Thermodynamics</h1>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/ILj1MEG60Vc" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <h2>4.1 The First and Second Laws</h2>
+        <p>The First Law states that the net heat supplied in a cycle is equal to the net work done. However, the Second Law indicates that in any complete cycle, the gross heat supplied must be greater than the work done; some heat must always be rejected by the system.<span class="cite-hidden"></span></p>
+        <div class="concept-box">
+            $$W = Q_1 - Q_2$$
+        </div>
+
+        <h2>4.2 Forward Heat Engines</h2>
+        <p>Work can easily be converted to other forms of energy, but converting heat to work requires special devices called heat engines.<span class="cite-hidden"></span></p>
+
+        <div class="img-container">
+            <svg viewBox="0 0 1300 1000" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d9534f" /></marker>
+                    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0056b3" /></marker>
+                    <marker id="arrowBlack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker>
+                </defs>
+
+                <!-- Boiler -->
+                <rect x="400" y="150" width="400" height="120" fill="#f8d7da" stroke="#d9534f" stroke-width="5"/>
+                <text x="600" y="220" font-family="sans-serif" font-weight="bold" font-size="28" text-anchor="middle" fill="#721c24">BOILER</text>
+                
+                <!-- Q_in Arrow -->
+                <path d="M 600 20 L 600 130" stroke="#d9534f" stroke-width="10" marker-end="url(#arrowRed)"/>
+                <text x="630" y="85" font-family="sans-serif" font-weight="bold" font-size="26" fill="#d9534f" text-anchor="start">Q_in (Furnace)</text>
+
+                <!-- Turbine -->
+                <polygon points="950,350 1100,400 1100,600 950,650" fill="#e2e3e5" stroke="#333" stroke-width="5"/>
+                <text x="1015" y="510" font-family="sans-serif" font-weight="bold" font-size="24" text-anchor="middle">TURBINE</text>
+                
+                <!-- Work out -->
+                <path d="M 1100 500 L 1260 500" stroke="#0056b3" stroke-width="12" marker-end="url(#arrowBlue)"/>
+                <text x="1180" y="470" font-family="sans-serif" font-weight="bold" font-size="26" fill="#0056b3" text-anchor="middle">W_out</text>
+
+                <!-- Condenser -->
+                <rect x="400" y="700" width="400" height="120" fill="#d4edda" stroke="#28a745" stroke-width="5"/>
+                <text x="600" y="770" font-family="sans-serif" font-weight="bold" font-size="28" text-anchor="middle" fill="#155724">CONDENSER</text>
+                
+                <!-- Q_out Arrow -->
+                <path d="M 600 820 L 600 930" stroke="#0056b3" stroke-width="10" marker-end="url(#arrowBlue)"/>
+                <text x="630" y="885" font-family="sans-serif" font-weight="bold" font-size="26" fill="#0056b3" text-anchor="start">Q_out (Sink)</text>
+
+                <!-- Pump -->
+                <circle cx="200" cy="500" r="100" fill="#e2e3e5" stroke="#333" stroke-width="5"/>
+                <text x="200" y="510" font-family="sans-serif" font-weight="bold" font-size="28" text-anchor="middle">PUMP</text>
+                
+                <!-- Work in -->
+                <path d="M 10 500 L 90 500" stroke="#d9534f" stroke-width="10" marker-end="url(#arrowRed)"/>
+                <text x="50" y="470" font-family="sans-serif" font-weight="bold" font-size="26" fill="#d9534f" text-anchor="middle">W_in</text>
+
+                <!-- Connecting Pipes -->
+                <path d="M 800 210 L 1015 210 L 1015 350" fill="none" stroke="#333" stroke-width="8"/>
+                <path d="M 1015 650 L 1015 760 L 800 760" fill="none" stroke="#333" stroke-width="8"/>
+                <path d="M 400 760 L 200 760 L 200 600" fill="none" stroke="#333" stroke-width="8"/>
+                <path d="M 200 400 L 200 210 L 400 210" fill="none" stroke="#333" stroke-width="8"/>
+                
+                <!-- Directional Flow arrows -->
+                <path d="M 900 210 L 920 210" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+                <path d="M 1015 700 L 1015 720" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+                <path d="M 300 760 L 280 760" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+                <path d="M 200 300 L 200 280" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+            </svg>
+            <div class="img-caption">Figure 4.1: Schematic of a Steam Power Plant (Forward Heat Engine).</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>Kelvin-Planck Statement:</strong><br>
+            It is impossible for any device that operates on a cycle to receive heat from a single reservoir and produce a net amount of work.<span class="cite-hidden"></span><br>
+            <em>No heat engine can have a thermal efficiency of 100 percent.</em>
+        </div>
+
+        <div class="img-container">
+            <svg viewBox="0 0 1100 800" xmlns="http://www.w3.org/2000/svg">
+                <!-- High Temp Reservoir -->
+                <rect x="300" y="50" width="400" height="100" fill="#f8d7da" stroke="#d9534f" stroke-width="6" rx="50"/>
+                <text x="500" y="110" font-family="sans-serif" font-weight="bold" font-size="26" text-anchor="middle" fill="#721c24">HOT RESERVOIR (T_H)</text>
+                
+                <!-- Q_H Arrow -->
+                <path d="M 500 150 L 500 250" stroke="#d9534f" stroke-width="12" marker-end="url(#arrowRed)"/>
+                <text x="530" y="210" font-family="sans-serif" font-weight="bold" font-size="30" fill="#d9534f" text-anchor="start">Q_H</text>
+
+                <!-- Heat Engine -->
+                <rect x="300" y="280" width="400" height="200" fill="#e2e3e5" stroke="#333" stroke-width="6" rx="20"/>
+                <circle cx="500" cy="380" r="60" fill="none" stroke="#333" stroke-width="5"/>
+                <path d="M 500 320 A 60 60 0 0 1 560 380" fill="none" stroke="#333" stroke-width="5" marker-end="url(#arrowBlack)"/>
+                <path d="M 500 440 A 60 60 0 0 1 440 380" fill="none" stroke="#333" stroke-width="5" marker-end="url(#arrowBlack)"/>
+                <text x="500" y="370" font-family="sans-serif" font-weight="bold" font-size="22" text-anchor="middle">HEAT</text>
+                <text x="500" y="400" font-family="sans-serif" font-weight="bold" font-size="22" text-anchor="middle">ENGINE</text>
+
+                <!-- Work Output Arrow -->
+                <text x="850" y="330" font-family="sans-serif" font-weight="bold" font-size="28" fill="#0056b3" text-anchor="middle">WORK OUTPUT</text>
+                <path d="M 700 380 L 1000 380" stroke="#0056b3" stroke-width="14" marker-end="url(#arrowBlue)"/>
+                <text x="850" y="440" font-family="sans-serif" font-style="italic" font-size="26" fill="#0056b3" text-anchor="middle">W = Q_H - Q_L</text>
+
+                <!-- Q_L Arrow -->
+                <path d="M 500 480 L 500 580" stroke="#0056b3" stroke-width="12" marker-end="url(#arrowBlue)"/>
+                <text x="530" y="540" font-family="sans-serif" font-weight="bold" font-size="30" fill="#0056b3" text-anchor="start">Q_L</text>
+
+                <!-- Low Temp Reservoir -->
+                <rect x="300" y="610" width="400" height="100" fill="#d4edda" stroke="#28a745" stroke-width="6" rx="50"/>
+                <text x="500" y="670" font-family="sans-serif" font-weight="bold" font-size="26" text-anchor="middle" fill="#155724">COLD RESERVOIR (T_L)</text>
+            </svg>
+            <div class="img-caption">Figure 4.2: Abstract Schematic of a Forward Heat Engine.</div>
+        </div>
+
+        <h3>Thermal Efficiency ($\eta_{th}$)</h3>
+        <p>The fraction of heat input converted to net work output is the thermal efficiency.<span class="cite-hidden"></span></p>
+        <div class="concept-box">
+            $$\eta_{th} = \frac{W_{\text{net,out}}}{Q_{\text{in}}} = \frac{Q_{\text{in}} - Q_{\text{out}}}{Q_{\text{in}}} = 1 - \frac{Q_{\text{out}}}{Q_{\text{in}}}$$
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Power Plant Thermal Efficiency</h4>
+            <p>A steam power plant receives heat from a furnace at a rate of 280 GJ/h. Heat losses to the surrounding air from the pipes are 8 GJ/h. Waste heat is transferred to the cooling water at 145 GJ/h. Determine net power output and thermal efficiency.<span class="cite-hidden"></span></p>
+            <p><strong>Solution:</strong><br>
+            Total heat rejected ($Q_{\text{out}}$): $145 + 8 = 153 \text{ GJ/h}$.<span class="cite-hidden"></span><br>
+            Cycle Net Work ($W_{\text{net}}$): $Q_{\text{in}} - Q_{\text{out}} = 280 - 153 = 127 \text{ GJ/h}$.<span class="cite-hidden"></span><br>
+            Convert to MW: $127 \times \frac{10^3 \text{ MJ}}{3600 \text{ s}} = 35.3 \text{ MW}$.<span class="cite-hidden"></span><br>
+            Cycle Thermal Efficiency ($\eta_{th}$): $\frac{127}{280} = 0.454 \text{ (or } 45.4\%)$.<span class="cite-hidden"></span></p>
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Car Engine Fuel Consumption</h4>
+            <p>A car engine with a power output of 48.5 kW has a thermal efficiency of 24%. The fuel has a heating value of 9092 kJ/kg. Determine the fuel consumption rate.<span class="cite-hidden"></span></p>
+            <p><strong>Solution:</strong><br>
+            Required Heat Input ($Q_{\text{in}}$): $\frac{W_{\text{net}}}{\eta_{th}} = \frac{48.5}{0.24} = 202.083 \text{ kW (kJ/s)}$.<span class="cite-hidden"></span><br>
+            Fuel Consumption Rate ($\dot{m}$): $\frac{Q_{\text{in}}}{\text{Heating Value}} = \frac{202.083}{9092} = 0.022 \text{ kg/s}$.<span class="cite-hidden"></span></p>
+        </div>
+
+        <h2>4.3 Reverse Heat Engines (Refrigerators & Heat Pumps)</h2>
+        <p>A reversed heat engine (like a Refrigerator or Heat Pump) pumps heat from a low-temperature region to a high-temperature region by utilizing work input.<span class="cite-hidden"></span></p>
+        
+        <div class="img-container">
+            <!-- Completely fixed Refrigerator diagram: Q_H to the right, W_in above the arrow, Q_L arrow starting below Evaporator -->
+            <svg viewBox="0 -100 1300 1050" xmlns="http://www.w3.org/2000/svg">
+                <!-- Condenser (Top) -->
+                <rect x="400" y="150" width="400" height="120" fill="#f8d7da" stroke="#d9534f" stroke-width="5"/>
+                <text x="600" y="220" font-family="sans-serif" font-weight="bold" font-size="26" text-anchor="middle" fill="#721c24">CONDENSER</text>
+                
+                <!-- Heat Out (Hot) - Text is anchor="start" so it sits safely to the right -->
+                <path d="M 600 150 L 600 20" stroke="#d9534f" stroke-width="10" marker-end="url(#arrowRed)"/>
+                <text x="630" y="70" font-family="sans-serif" font-weight="bold" font-size="24" fill="#d9534f" text-anchor="start">Q_H (Warm Environment)</text>
+
+                <!-- Compressor (Right) -->
+                <rect x="900" y="350" width="200" height="180" fill="#e2e3e5" stroke="#333" stroke-width="5"/>
+                <text x="1000" y="445" font-family="sans-serif" font-weight="bold" font-size="24" text-anchor="middle">COMPRESSOR</text>
+                
+                <!-- Work in - Text is placed ABOVE the arrow line -->
+                <text x="1170" y="390" font-family="sans-serif" font-weight="bold" font-size="28" fill="#d9534f" text-anchor="middle">W_in</text>
+                <path d="M 1250 440 L 1110 440" stroke="#d9534f" stroke-width="10" marker-end="url(#arrowRed)"/>
+
+                <!-- Evaporator (Bottom) -->
+                <rect x="400" y="600" width="400" height="120" fill="#d4edda" stroke="#28a745" stroke-width="5"/>
+                <text x="600" y="670" font-family="sans-serif" font-weight="bold" font-size="26" text-anchor="middle" fill="#155724">EVAPORATOR</text>
+                
+                <!-- Heat In (Cold) - Arrow starts below the box and points up to its bottom edge -->
+                <path d="M 600 870 L 600 730" stroke="#0056b3" stroke-width="10" marker-end="url(#arrowBlue)"/>
+                <text x="630" y="810" font-family="sans-serif" font-weight="bold" font-size="24" fill="#0056b3" text-anchor="start">Q_L (Cold Space)</text>
+
+                <!-- Expansion Valve (Left) -->
+                <path d="M 150 380 L 250 380 L 200 440 Z" fill="#999" stroke="#333" stroke-width="4"/>
+                <path d="M 150 500 L 250 500 L 200 440 Z" fill="#999" stroke="#333" stroke-width="4"/>
+                <text x="200" y="550" font-family="sans-serif" font-weight="bold" font-size="24" text-anchor="middle">EXPANSION</text>
+                <text x="200" y="580" font-family="sans-serif" font-weight="bold" font-size="24" text-anchor="middle">VALVE</text>
+
+                <!-- Connecting Pipes -->
+                <path d="M 1000 350 L 1000 210 L 800 210" fill="none" stroke="#333" stroke-width="8"/>
+                <path d="M 400 210 L 200 210 L 200 380" fill="none" stroke="#333" stroke-width="8"/>
+                <path d="M 200 500 L 200 660 L 400 660" fill="none" stroke="#333" stroke-width="8"/>
+                <path d="M 800 660 L 1000 660 L 1000 530" fill="none" stroke="#333" stroke-width="8"/>
+                
+                <!-- Directional Flow arrows on pipes -->
+                <path d="M 900 210 L 880 210" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+                <path d="M 300 210 L 280 210" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+                <path d="M 300 660 L 320 660" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+                <path d="M 900 660 L 920 660" stroke="#333" stroke-width="12" marker-end="url(#arrowBlack)"/>
+            </svg>
+            <div class="img-caption">Figure 4.3: Schematic of a Reverse Heat Engine (Refrigerator / Heat Pump).</div>
+        </div>
+
+        <div class="rule-box">
+            <strong>Clausius Statement:</strong><br>
+            No device can transfer heat from a cooler body to a warmer one without leaving an effect on the surroundings.<span class="cite-hidden"></span><br>
+            <em>A refrigerator cannot operate unless driven by an external power source.</em>
+        </div>
+
+        <div class="concept-box">
+            Refrigerator: $$COP_R = \frac{Q_L}{W_{\text{net,in}}}$$ <br>
+            Heat Pump: $$COP_{HP} = \frac{Q_H}{W_{\text{net,in}}}$$
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Refrigerator COP (Reverse Cycle)</h4>
+            <p>A household refrigerator with a COP of 1.2 removes heat from the refrigerated space at a rate of 60 kJ/min. Determine the electric power consumed and heat transferred to the kitchen air.<span class="cite-hidden"></span></p>
+            <p><strong>Solution:</strong><br>
+            Convert $Q_L$: $60 \text{ kJ/min} \times \left(\frac{1 \text{ min}}{60 \text{ s}}\right) = 1.0 \text{ kW}$.<span class="cite-hidden"></span><br>
+            Power Consumed ($W_{\text{in}}$): $\frac{Q_L}{COP_R} = \frac{1.0}{1.2} = 0.83 \text{ kW}$.<span class="cite-hidden"></span><br>
+            Heat to Kitchen ($Q_H$): $W_{\text{in}} + Q_L = 0.83 + 1.0 = 1.83 \text{ kW}$.<span class="cite-hidden"></span></p>
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Heat Pump Performance</h4>
+            <p>Determine the COP of a heat pump that supplies energy to a house at a rate of 8000 kJ/h for each kW of electric power it draws. Also, determine the rate of energy absorption from outdoor air.<span class="cite-hidden"></span></p>
+            <p><strong>Solution:</strong><br>
+            Convert $W_{\text{in}}$ to match units: $1 \text{ kW} = 3600 \text{ kJ/h}$.<span class="cite-hidden"></span><br>
+            $COP_{HP} = \frac{Q_H}{W_{\text{in}}} = \frac{8000}{3600} = 2.22$.<span class="cite-hidden"></span><br>
+            Convert $Q_H$ to kW: $8000 / 3600 = 2.22 \text{ kW}$.<br>
+            Energy Absorption ($Q_L$): $Q_H - W_{\text{in}} = 2.22 - 1.0 = 1.22 \text{ kW}$.<span class="cite-hidden"></span></p>
+        </div>
+
+        <h2>4.4 Vapor Power Cycles</h2>
+
+        <h3>Carnot Vapor Cycle</h3>
+        <p>The Carnot cycle is the most efficient cycle operating between two specified temperature limits, but it is not a suitable model for actual power cycles due to practical limitations.<span class="cite-hidden"></span></p>
+        
+        <div class="img-container">
+            <svg viewBox="-50 -50 600 450" xmlns="http://www.w3.org/2000/svg">
+                <line x1="50" y1="350" x2="500" y2="350" stroke="#333" stroke-width="4" />
+                <line x1="50" y1="350" x2="50" y2="30" stroke="#333" stroke-width="4" />
+                <text x="510" y="355" font-family="sans-serif" font-weight="bold" font-size="18">s</text>
+                <text x="20" y="30" font-family="sans-serif" font-weight="bold" font-size="18">T</text>
+                <text x="15" y="105" font-family="sans-serif" font-size="16">T₁</text>
+                <text x="15" y="245" font-family="sans-serif" font-size="16">T₂</text>
+
+                <path d="M 100 320 Q 275 -20 450 320" fill="none" stroke="#666" stroke-width="3" />
+
+                <rect x="180" y="100" width="160" height="140" fill="none" stroke="#0056b3" stroke-width="5" />
+                
+                <circle cx="340" cy="100" r="8" fill="#333"/> <text x="360" y="95" font-weight="bold" font-size="18">1</text>
+                <circle cx="340" cy="240" r="8" fill="#333"/> <text x="360" y="260" font-weight="bold" font-size="18">2</text>
+                <circle cx="180" cy="240" r="8" fill="#333"/> <text x="150" y="260" font-weight="bold" font-size="18">3</text>
+                <circle cx="180" cy="100" r="8" fill="#333"/> <text x="150" y="95" font-weight="bold" font-size="18">4</text>
+                
+                <path d="M 230 100 L 280 100" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <path d="M 340 150 L 340 190" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <path d="M 290 240 L 240 240" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+                <path d="M 180 190 L 180 150" stroke="#0056b3" stroke-width="6" marker-end="url(#arrowBlue)"/>
+            </svg>
+            <div class="img-caption">Figure 4.4: T-s Diagram of a Carnot Vapor Cycle.</div>
+        </div>
+
+        <ul>
+            <li><strong>Process 4-1:</strong> Isothermal heat addition in a boiler $\rightarrow Q_{in} = h_1 - h_4$.<span class="cite-hidden"></span></li>
+            <li><strong>Process 1-2:</strong> Isentropic expansion in a turbine $\rightarrow W_T = h_1 - h_2$.<span class="cite-hidden"></span></li>
+            <li><strong>Process 2-3:</strong> Isothermal heat rejection in a condenser $\rightarrow Q_{out} = h_2 - h_3$.<span class="cite-hidden"></span></li>
+            <li><strong>Process 3-4:</strong> Isentropic compression in a compressor $\rightarrow W_C = h_4 - h_3$.<span class="cite-hidden"></span></li>
+        </ul>
+        <div class="concept-box">
+            $$\eta_{\text{Carnot}} = 1 - \frac{T_2}{T_1}$$
+        </div>
+
+        <h3>Rankine Cycle (Ideal Cycle for Vapor Power Plants)</h3>
+        <p>Many impracticalities of the Carnot cycle are eliminated by superheating the steam in the boiler and condensing it completely in the condenser.<span class="cite-hidden"></span></p>
+        
+        <div class="img-container">
+            <svg viewBox="-50 -50 600 450" xmlns="http://www.w3.org/2000/svg">
+                <line x1="50" y1="350" x2="500" y2="350" stroke="#333" stroke-width="4" />
+                <line x1="50" y1="350" x2="50" y2="30" stroke="#333" stroke-width="4" />
+                <text x="510" y="355" font-family="sans-serif" font-weight="bold" font-size="18">s</text>
+                <text x="20" y="30" font-family="sans-serif" font-weight="bold" font-size="18">T</text>
+                <text x="15" y="150" font-family="sans-serif" font-size="16">T₁</text>
+                <text x="15" y="270" font-family="sans-serif" font-size="16">T₂</text>
+
+                <path d="M 100 320 Q 275 -20 450 320" fill="none" stroke="#666" stroke-width="3" />
+
+                <path d="M 140 270 L 140 220" fill="none" stroke="#0056b3" stroke-width="5" marker-end="url(#arrowBlue)" />
+                <path d="M 140 220 L 180 150" fill="none" stroke="#0056b3" stroke-width="5" marker-end="url(#arrowBlue)" />
+                <path d="M 180 150 L 350 150" fill="none" stroke="#0056b3" stroke-width="5" marker-mid="url(#arrowBlue)" />
+                <path d="M 350 150 L 350 270" fill="none" stroke="#0056b3" stroke-width="5" marker-end="url(#arrowBlue)" />
+                <path d="M 350 270 L 140 270" fill="none" stroke="#0056b3" stroke-width="5" marker-mid="url(#arrowBlue)" />
+                
+                <path d="M 90 330 Q 140 220 180 150 L 350 150 Q 420 80 490 50" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="4,4"/>
+                <path d="M 100 340 Q 130 270 140 270 L 350 270 Q 440 220 490 140" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="4,4"/>
+
+                <circle cx="350" cy="150" r="7" fill="#333"/> <text x="365" y="145" font-weight="bold" font-size="18">1</text>
+                <circle cx="350" cy="270" r="7" fill="#333"/> <text x="365" y="285" font-weight="bold" font-size="18">2</text>
+                <circle cx="140" cy="270" r="7" fill="#333"/> <text x="115" y="285" font-weight="bold" font-size="18">3</text>
+                <circle cx="140" cy="220" r="7" fill="#333"/> <text x="110" y="220" font-weight="bold" font-size="18">4</text>
+                <circle cx="180" cy="150" r="7" fill="#333"/> <text x="155" y="140" font-weight="bold" font-size="18">5</text>
+
+                <text x="470" y="45" font-family="sans-serif" font-size="16">p₁</text>
+                <text x="490" y="135" font-family="sans-serif" font-size="16">p₂</text>
+            </svg>
+            <div class="img-caption">Figure 4.5: T-s Diagram of an Ideal Rankine Cycle.</div>
+        </div>
+
+        <ul>
+            <li><strong>Process 4-1:</strong> Constant pressure heat addition in a boiler.<span class="cite-hidden"></span></li>
+            <li><strong>Process 1-2:</strong> Isentropic expansion in a turbine.<span class="cite-hidden"></span></li>
+            <li><strong>Process 2-3:</strong> Constant pressure heat rejection in a condenser.<span class="cite-hidden"></span></li>
+            <li><strong>Process 3-4:</strong> Isentropic compression in a pump.<span class="cite-hidden"></span></li>
+        </ul>
+
+        <div class="rule-box">
+            <strong>Rankine Cycle Equations:</strong><br>
+            $$Q_{\text{in}} = h_1 - h_4 \quad \mid \quad Q_{\text{out}} = h_2 - h_3$$<span class="cite-hidden"></span><br>
+            $$W_{\text{Turbine}} = h_1 - h_2 \quad \mid \quad W_{\text{Pump}} = h_4 - h_3 = v_f(P_4 - P_3)$$<span class="cite-hidden"></span><br>
+            $$W_{\text{net}} = W_T - W_P = Q_{\text{in}} - Q_{\text{out}}$$
+        </div>
+
+        <!-- Calculator 4 -->
+        <div class="calculator">
+            <h3>Interactive App Tool: Efficiency, COP & Rankine Cycle Solvers</h3>
+            <select id="calcType" onchange="updateInputs()">
+                <option value="energy_balance">First Law: Energy Balance (E_in, E_out)</option>
+                <option value="heat_engine">Heat Engine: Net Work & Thermal Efficiency (η)</option>
+                <option value="refrigerator">Refrigerator: COP</option>
+                <option value="heat_pump">Heat Pump: COP</option>
+                <option value="carnot">Carnot Cycle: Maximum Efficiency</option>
+                <option value="rankine_pump">Rankine Cycle Process 3-4: Pump Work</option>
+                <option value="rankine_full">Rankine Cycle Complete: Net Work, Efficiency, SSC & Ratio</option>
+            </select>
+            <div id="dynamic-inputs"></div>
+            <button class="calc-btn" onclick="solveProblem()">Calculate Step-by-Step</button>
+            <div id="solutionOutput" class="solution-step"></div>
+        </div>
+
+        <!-- PRACTICE QUIZ SECTION -->
+        <div class="quiz-btn-container">
+            <button class="quiz-btn" onclick="openQuiz()">Take Chapter 4 Practice Quiz</button>
+        </div>
+
+    </div>
+
+    <!-- QUIZ MODAL -->
+    <div id="quizModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeQuiz()">&times;</button>
+            <h2 class="quiz-header">Chapter 4 Practice Quiz</h2>
+            <div id="quiz-container"></div>
+            <button id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateInputs() {
+            const type = document.getElementById('calcType').value;
+            const container = document.getElementById('dynamic-inputs');
+            container.innerHTML = '';
+            if(type === 'energy_balance') {
+                container.innerHTML = `<div class="input-group"><label>Total Energy Entering, E_in (kJ):</label><input type="number" id="input_Ein"><label>Total Energy Leaving, E_out (kJ):</label><input type="number" id="input_Eout"></div>`;
+            } else if(type === 'heat_engine') {
+                container.innerHTML = `<div class="input-group"><label>Heat Input, Q_in (kW):</label><input type="number" id="input_Qin"><label>Heat Rejected, Q_out (kW):</label><input type="number" id="input_Qout"></div>`;
+            } else if (type === 'refrigerator') {
+                container.innerHTML = `<div class="input-group"><label>Heat Removed (Evaporator), Q_L (kW):</label><input type="number" id="input_QL"><label>Power Input, W_in (kW):</label><input type="number" id="input_Win"></div>`;
+            } else if (type === 'heat_pump') {
+                container.innerHTML = `<div class="input-group"><label>Heat Supplied (Condenser), Q_H (kW):</label><input type="number" id="input_QH"><label>Power Input, W_in (kW):</label><input type="number" id="input_Win"></div>`;
+            } else if (type === 'carnot') {
+                container.innerHTML = `<div class="input-group"><label>High Temp, T_1 (K):</label><input type="number" id="input_T1"><label>Low Temp, T_2 (K):</label><input type="number" id="input_T2"></div>`;
+            } else if (type === 'rankine_pump') {
+                container.innerHTML = `<div class="input-group"><label>Specific Volume, v_f (m³/kg):</label><input type="number" id="input_vf"><label>Boiler Pressure, P_4 (kPa):</label><input type="number" id="input_P4"><label>Condenser Pressure, P_3 (kPa):</label><input type="number" id="input_P3"></div>`;
+            } else if (type === 'rankine_full') {
+                container.innerHTML = `<div class="input-group"><label>h1 (Turbine In):</label><input type="number" id="input_h1"><label>h2 (Turbine Out):</label><input type="number" id="input_h2"><label>h3 (Condenser Out):</label><input type="number" id="input_h3"><label>h4 (Pump Out):</label><input type="number" id="input_h4"></div>`;
+            }
+        }
+        updateInputs();
+
+        function solveProblem() {
+            const type = document.getElementById('calcType').value;
+            const output = document.getElementById('solutionOutput');
+            let steps = "";
+            
+            if (type === 'energy_balance') {
+                const Ein = parseFloat(document.getElementById('input_Ein').value), Eout = parseFloat(document.getElementById('input_Eout').value);
+                if(isNaN(Ein)||isNaN(Eout)) return alert("Enter valid numbers");
+                steps = `ΔE = E_in - E_out\nΔE = ${Ein} - ${Eout} = ${Ein - Eout} kJ`;
+            } 
+            else if (type === 'heat_engine') {
+                const Qin = parseFloat(document.getElementById('input_Qin').value), Qout = parseFloat(document.getElementById('input_Qout').value);
+                if(isNaN(Qin)||isNaN(Qout)) return alert("Enter valid numbers");
+                const Wnet = Qin - Qout, eff = Wnet / Qin;
+                steps = `W_net = Q_in - Q_out = ${Qin} - ${Qout} = ${Wnet}\nη = W_net / Q_in = ${eff.toFixed(4)}\nThermal Efficiency = ${(eff*100).toFixed(2)}%`;
+            } 
+            else if (type === 'refrigerator') {
+                const QL = parseFloat(document.getElementById('input_QL').value), Win = parseFloat(document.getElementById('input_Win').value);
+                if(isNaN(QL)||isNaN(Win)) return alert("Enter valid numbers");
+                steps = `COP_R = Q_L / W_in = ${QL} / ${Win} = ${(QL/Win).toFixed(2)}\nQ_H = Q_L + W_in = ${QL + Win} kW`;
+            }
+            else if (type === 'heat_pump') {
+                const QH = parseFloat(document.getElementById('input_QH').value), Win = parseFloat(document.getElementById('input_Win').value);
+                if(isNaN(QH)||isNaN(Win)) return alert("Enter valid numbers");
+                steps = `COP_HP = Q_H / W_in = ${QH} / ${Win} = ${(QH/Win).toFixed(2)}\nQ_L = Q_H - W_in = ${QH - Win} kW`;
+            }
+            else if (type === 'carnot') {
+                const T1 = parseFloat(document.getElementById('input_T1').value), T2 = parseFloat(document.getElementById('input_T2').value);
+                if(isNaN(T1)||isNaN(T2)) return alert("Enter valid numbers");
+                const eff = 1 - (T2 / T1);
+                steps = `η_Carnot = 1 - (T_2 / T_1)\nη_Carnot = 1 - (${T2} / ${T1}) = ${eff.toFixed(4)}\nMax Efficiency = ${(eff*100).toFixed(2)}%`;
+            }
+            else if (type === 'rankine_pump') {
+                const vf = parseFloat(document.getElementById('input_vf').value), P4 = parseFloat(document.getElementById('input_P4').value), P3 = parseFloat(document.getElementById('input_P3').value);
+                if(isNaN(vf)||isNaN(P4)||isNaN(P3)) return alert("Enter valid numbers");
+                steps = `W_P = v_f(P_4 - P_3)\nW_P = ${vf} * (${P4} - ${P3}) = ${(vf*(P4-P3)).toFixed(2)} kJ/kg`;
+            }
+            else if (type === 'rankine_full') {
+                const h1 = parseFloat(document.getElementById('input_h1').value), h2 = parseFloat(document.getElementById('input_h2').value), h3 = parseFloat(document.getElementById('input_h3').value), h4 = parseFloat(document.getElementById('input_h4').value);
+                if(isNaN(h1)||isNaN(h2)||isNaN(h3)||isNaN(h4)) return alert("Enter valid numbers");
+                const WT = h1 - h2, WP = h4 - h3, Wnet = WT - WP, Qin = h1 - h4, eff = Wnet / Qin;
+                steps = `W_T = ${h1} - ${h2} = ${WT} kJ/kg\nW_P = ${h4} - ${h3} = ${WP} kJ/kg\nW_net = ${WT} - ${WP} = ${Wnet} kJ/kg\nQ_in = ${h1} - ${h4} = ${Qin} kJ/kg\nη_th = ${Wnet} / ${Qin} = ${(eff*100).toFixed(2)}%`;
+            }
+
+            output.style.display = 'block'; output.innerHTML = steps;
+            if (window.MathJax) { MathJax.typesetPromise([output]); }
+        }
+
+        const quizData = [
+            { q: "1. A heat engine receives 1200 kJ of heat and rejects 800 kJ. What is the net work done?", options: ["400 kJ", "800 kJ", "1200 kJ", "2000 kJ"], ans: 0, hint: "W = Q_in - Q_out" },
+            { q: "2. A car engine produces 50 kW of power (W_net) and has a thermal efficiency of 25%. What is the rate of heat input from fuel (Q_in)?", options: ["12.5 kW", "100 kW", "150 kW", "200 kW"], ans: 3, hint: "Q_in = W_net / η_th\nQ_in = 50 / 0.25 = 200 kW." },
+            { q: "3. A steam power plant receives 280 GJ/h of heat from a furnace and rejects 145 GJ/h to cooling water. It also loses 8 GJ/h from pipes. What is the net power output?", options: ["127 GJ/h", "135 GJ/h", "145 GJ/h", "280 GJ/h"], ans: 0, hint: "W_net = Q_in - Total Q_out\nW_net = 280 - (145 + 8) = 127 GJ/h." },
+            { q: "4. The objective of a Refrigerator is to:", options: ["Maintain a heated space", "Remove heat from a low-temperature space", "Produce mechanical work", "Operate without an external power source"], ans: 1, hint: "Keep a cold space cold by removing Q_L." },
+            { q: "5. A refrigerator removes heat at a rate of 60 kJ/min from a cold space. If its COP is 1.2, what is the power consumed?", options: ["40 kJ/min", "50 kJ/min", "60 kJ/min", "72 kJ/min"], ans: 1, hint: "W_in = Q_L / COP_R = 60 / 1.2 = 50 kJ/min." },
+            { q: "6. For the refrigerator in Question 5, what is the rate of heat transfer to the kitchen air (Q_H)?", options: ["10 kJ/min", "50 kJ/min", "110 kJ/min", "120 kJ/min"], ans: 2, hint: "Q_H = Q_L + W_in = 60 + 50 = 110 kJ/min." },
+            { q: "7. A heat pump supplies 8000 kJ/h while drawing 1 kW (3600 kJ/h) of power. What is its COP?", options: ["0.45", "1.22", "2.22", "4.44"], ans: 2, hint: "COP = Q_H / W_in = 8000 / 3600" },
+            { q: "8. A Carnot cycle operates between 800 K and 300 K. What is its maximum thermal efficiency?", options: ["37.5%", "62.5%", "100%", "266%"], ans: 1, hint: "1 - (300 / 800) = 0.625" },
+            { q: "9. In an ideal Rankine cycle, steam enters the turbine at 3200 kJ/kg and leaves at 2200 kJ/kg. What is the specific work of the turbine (W_T)?", options: ["1000 kJ/kg", "2200 kJ/kg", "5400 kJ/kg"], ans: 0, hint: "W_T = h_1 - h_2" },
+            { q: "10. In a Rankine cycle, water enters a pump at 200 kJ/kg and leaves at 210 kJ/kg. What is the specific pump work (W_P)?", options: ["5 kJ/kg", "10 kJ/kg", "200 kJ/kg", "410 kJ/kg"], ans: 1, hint: "W_P = h_4 - h_3 = 210 - 200 = 10 kJ/kg." },
+            { q: "11. If the specific volume of liquid water entering the pump is 0.001 m³/kg, and it is pumped from 10 kPa to 3010 kPa, what is W_P?", options: ["3 kJ/kg", "30 kJ/kg", "3000 kJ/kg", "3010 kPa"], ans: 0, hint: "W_P = v_f * (P_4 - P_3) = 0.001 * (3010 - 10) = 3 kJ/kg." },
+            { q: "12. A boiler heats water from an enthalpy of 210 kJ/kg to 3200 kJ/kg. How much heat is supplied (Q_in)?", options: ["210 kJ/kg", "2990 kJ/kg", "3200 kJ/kg", "3410 kJ/kg"], ans: 1, hint: "Q_in = h_1 - h_4 = 3200 - 210 = 2990 kJ/kg." },
+            { q: "13. A Rankine cycle has W_T = 1000 kJ/kg and W_P = 10 kJ/kg. What is the Net Work (W_net)?", options: ["990 kJ/kg", "1000 kJ/kg", "1010 kJ/kg", "1100 kJ/kg"], ans: 0, hint: "W_net = W_T - W_P = 1000 - 10 = 990 kJ/kg." },
+            { q: "14. If a Rankine cycle has a net work of 990 kJ/kg and a heat input of 2990 kJ/kg, what is its thermal efficiency?", options: ["20.5%", "33.1%", "45.0%", "50.0%"], ans: 1, hint: "η_th = W_net / Q_in = 990 / 2990 = 33.1%." },
+            { q: "15. A Rankine cycle produces a net work of 990 kJ/kg. What is its Specific Steam Consumption (SSC)?", options: ["0.275 kg/kWh", "3.636 kg/kWh", "4.50 kg/kWh", "9.90 kg/kWh"], ans: 1, hint: "SSC = 3600 / W_net = 3600 / 990 = 3.636 kg/kWh." },
+            { q: "16. A Rankine cycle has a net work of 990 kJ/kg and a turbine work of 1000 kJ/kg. What is its Work Ratio?", options: ["0.010", "0.990", "1.010", "1.100"], ans: 1, hint: "Work Ratio = W_net / W_T = 990 / 1000 = 0.990." },
+            { q: "17. The Clausius statement dictates that a refrigerator:", options: ["Operates with 100% efficiency.", "Produces net work.", "Cannot operate unless driven by an external power source.", "Violates the first law of thermodynamics."], ans: 2, hint: "Heat cannot spontaneously flow from cold to hot without an external power source." },
+            { q: "18. The Kelvin-Planck statement implies that:", options: ["No heat engine can have 100% efficiency.", "Refrigerators do not need work.", "Heat can be completely converted into work."], ans: 0, hint: "It is impossible to receive heat from a single reservoir and produce a net amount of work without rejecting some heat." }
+        ];
+
+        function buildQuiz() {
+            const container = document.getElementById("quiz-container");
+            container.innerHTML = ""; 
+            quizData.forEach((item, index) => {
+                let optionsHtml = "";
+                item.options.forEach((opt, optIndex) => { optionsHtml += `<label class="option-label" id="label-${index}-${optIndex}"><input type="radio" name="q${index}" value="${optIndex}"> ${opt}</label>`; });
+                container.innerHTML += `<div class="question-block" id="qb-${index}"><div class="question-text">${item.q}</div>${optionsHtml}<button type="button" class="show-how-btn" onclick="toggleHint(${index})">Show me how</button><div id="hint-${index}" class="hint-box">${item.hint}</div></div>`;
+            });
+        }
+
+        function toggleHint(index) {
+            const hb = document.getElementById(`hint-${index}`);
+            hb.style.display = hb.style.display === "block" ? "none" : "block";
+        }
+
+        function openQuiz() { buildQuiz(); document.getElementById("quiz-result").style.display = "none"; document.getElementById("submitQuizBtn").style.display = "block"; document.getElementById("quizModal").style.display = "flex"; }
+        function closeQuiz() { document.getElementById("quizModal").style.display = "none"; }
+
+        function submitQuiz() {
+            let score = 0;
+            quizData.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                document.querySelectorAll(`#qb-${index} .option-label`).forEach(lbl => lbl.classList.remove('correct-ans', 'wrong-ans'));
+                if (selected) {
+                    const val = parseInt(selected.value);
+                    if (val === item.ans) { score++; document.getElementById(`label-${index}-${val}`).classList.add('correct-ans'); } 
+                    else { document.getElementById(`label-${index}-${val}`).classList.add('wrong-ans'); document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans'); }
+                } else { document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans'); }
+            });
+            const res = document.getElementById("quiz-result");
+            res.innerHTML = `You scored ${score} out of 18!`;
+            res.style.color = score >= 14 ? "#155724" : "#721c24";
+            res.style.backgroundColor = score >= 14 ? "#d4edda" : "#f8d7da";
+            res.style.display = "block"; document.getElementById("submitQuizBtn").style.display = "none";
+        }
+    </script>
+</body>
+</html>

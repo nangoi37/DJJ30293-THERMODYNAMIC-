@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Final Examination - DJJ30293 THERMODYNAMIC</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --accent: #e9ecef; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        
+        .navbar { background: var(--primary); display: flex; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .navbar a { color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
+        .navbar a:hover { background: rgba(255,255,255,0.1); }
+        .navbar a.active { border-bottom: 3px solid #ffd700; background: rgba(255,255,255,0.15); }
+        
+        .container { max-width: 900px; margin: 20px auto; padding: 25px; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; border: 1px solid #eaeaea; }
+        h1 { color: #111; border-bottom: 3px solid var(--primary); padding-bottom: 5px; margin-top: 10px; text-transform: uppercase; }
+        h2 { color: var(--primary); border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 35px; }
+        
+        .set-banner { background: #0056b3; color: white; padding: 12px 20px; font-size: 1.25rem; font-weight: bold; border-radius: 6px; margin-top: 40px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .exam-block { background: #f8f9fa; border: 1px solid #dee2e6; border-left: 5px solid var(--primary); padding: 20px; margin: 20px 0; border-radius: 6px; }
+        .question-header { font-weight: bold; font-size: 1.1rem; color: #111; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .marks-badge { background: #0056b3; color: white; padding: 2px 10px; border-radius: 12px; font-size: 0.85rem; }
+        
+        .toggle-btn { background: #17a2b8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: background 0.2s; }
+        .toggle-btn:hover { background: #138496; }
+        .solution-box { display: none; background: #f0f7ff; border: 1px solid #b8daff; border-left: 4px solid #0056b3; padding: 15px; margin-top: 15px; border-radius: 4px; font-size: 0.95rem; }
+        .hint-text { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px; margin-bottom: 10px; font-weight: 500; }
+        
+        .table-container { overflow-x: auto; margin: 15px 0; }
+        .styled-table { border-collapse: collapse; min-width: 100%; font-size: 0.9rem; }
+        .styled-table thead tr { background-color: var(--primary); color: #ffffff; text-align: left; }
+        .styled-table th, .styled-table td { padding: 10px 12px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chapter1.html">Ch 1</a>
+        <a href="chapter2.html">Ch 2</a>
+        <a href="chapter3.html">Ch 3</a>
+        <a href="chapter4.html">Ch 4</a>
+        <a href="mock_exam.html" class="active" style="border-right: none;">Mock Exam</a>
+    </div>
+
+    <div class="container">
+        <h1>DJJ30293 Mock Final Examination Portal</h1>
+        <p>Complete set of 4 structured final examination papers with full mark allocations, hint boxes, and step-by-step mathematical solutions.</p>
+
+        <!-- ================= SET 1 ================= -->
+        <div class="set-banner">SET 1: Final Examination (Sesi I 2025/2026)</div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>1(a) Reversible vs Irreversible Processes</span>
+                <span class="marks-badge">6 Marks</span>
+            </div>
+            <p>State THREE (3) differences between a Reversible Process and an Irreversible Process.</p>
+            <button class="toggle-btn" onclick="toggleSolution('s1_1a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s1_1a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> Compare friction, equilibrium speed, and surrounding changes.</div>
+                <div class="table-container">
+                    <table class="styled-table">
+                        <thead>
+                            <tr><th>Reversible Process</th><th>Irreversible Process</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Can be reversed completely along the same path without leaving any change in surroundings.</td><td>Cannot return both system and surroundings to their exact initial states.</td></tr>
+                            <tr><td>Occurs infinitesimally slowly (quasi-static equilibrium).</td><td>Occurs rapidly with finite changes and non-equilibrium states.</td></tr>
+                            <tr><td>No dissipative forces present (zero friction or turbulence).</td><td>Involves friction, unrestrained expansion, or heat transfer across finite temperature differences.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>1(b) Wet Steam Properties at 8 bar</span>
+                <span class="marks-badge">9 Marks</span>
+            </div>
+            <p>Given wet steam at $P = 8\text{ bar}$ and $u = 2450\text{ kJ/kg}$. Calculate:</p>
+            <ol type="i">
+                <li>Dryness fraction ($x$) [3 Marks]</li>
+                <li>Specific volume ($v$) [3 Marks]</li>
+                <li>Specific enthalpy ($h$) [3 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s1_1b')">Show Solution & Step-by-Step Guide</button>
+            <div id="s1_1b" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> At $8\text{ bar}$: $u_f = 720$, $u_g = 2577$, $v_g = 0.2404$, $h_f = 721$, $h_{fg} = 2048$.</div>
+                <p><strong>Step 1: Dryness Fraction ($x$)</strong><br>$$u = u_f + x(u_g - u_f) \implies 2450 = 720 + x(2577 - 720) \implies \mathbf{x = 0.9316}$$</p>
+                <p><strong>Step 2: Specific Volume ($v$)</strong><br>$$v = x \cdot v_g = 0.9316 \times 0.2404 = \mathbf{0.2239\text{ m}^3/\text{kg}}$$</p>
+                <p><strong>Step 3: Specific Enthalpy ($h$)</strong><br>$$h = h_f + x \cdot h_{fg} = 721 + 0.9316(2048) = \mathbf{2628.92\text{ kJ/kg}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>2(a) Energy Interactions in a System</span>
+                <span class="marks-badge">9 Marks</span>
+            </div>
+            <p>A closed system undergoes energy transfers: $W_1 = 0.96\text{ MJ}$ (in), $W_2 = 202\text{ kJ}$ (out), $Q_1 = 2.16\text{ MJ}$ (out), $Q_2 = 46.9\text{ kJ}$ (in), $Q_3 = 35.9\text{ kNm}$ (out). Calculate:</p>
+            <ol type="i">
+                <li>Total amount of work ($W_{\text{net}}$) in kJ. [4 Marks]</li>
+                <li>Value of $Q_4$ if internal energy increases by $120\text{ kJ}$. [5 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s1_2a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s1_2a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> Sign convention: Heat IN (+), Heat OUT (-), Work OUT (+), Work IN (-).</div>
+                <p><strong>Step 1: Net Work ($W_{\text{net}}$)</strong><br>$$W_1 = -960\text{ kJ}, \quad W_2 = +202\text{ kJ} \implies W_{\text{net}} = -960 + 202 = \mathbf{-758\text{ kJ}}$$</p>
+                <p><strong>Step 2: Calculate $Q_4$</strong><br>$$Q_{\text{net}} = -2160 + 46.9 - 35.9 + Q_4 = -2149 + Q_4$$
+                $$\Delta U = Q_{\text{net}} - W_{\text{net}} \implies 120 = (-2149 + Q_4) - (-758) \implies \mathbf{Q_4 = +1511\text{ kJ}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>3(a) Turbine Power & Fluid Flow</span>
+                <span class="marks-badge">10 Marks</span>
+            </div>
+            <p>Fluid flows steadily in a turbine at $\dot{m} = 4.17\text{ kg/s}$, $P_1 = 6.5\text{ bar}$, $v_1 = 0.25\text{ m}^3/\text{kg}$, $A_1 = 0.35\text{ m}^2$. Leaves at $P_2 = 5.2\text{ bar}$, $v_2 = 0.40\text{ m}^3/\text{kg}$. Given $u_2 - u_1 = -800\text{ kJ/kg}$, heat loss $\dot{Q} = -255\text{ kW}$, $C_2 \approx 0$. Determine:</p>
+            <ol type="i">
+                <li>Inlet velocity ($C_1$). [3 Marks]</li>
+                <li>Power output ($\dot{W}$). [7 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s1_3a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s1_3a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $C_1 = \frac{\dot{m} v_1}{A_1}$. Express enthalpy change as $h_2 - h_1 = (u_2 - u_1) + (P_2 v_2 - P_1 v_1)$.</div>
+                <p><strong>Step 1: Inlet Velocity ($C_1$)</strong><br>$$C_1 = \frac{4.17 \times 0.25}{0.35} = \mathbf{2.98\text{ m/s}}$$</p>
+                <p><strong>Step 2: Power Output ($\dot{W}$)</strong><br>
+                $$h_2 - h_1 = -800 + [(520 \times 0.40) - (650 \times 0.25)] = -754.5\text{ kJ/kg}$$
+                $$\dot{Q} - \dot{W} = \dot{m}(h_2 - h_1) \implies -255 - \dot{W} = 4.17 \times (-754.5) \implies \mathbf{\dot{W} = +2891.27\text{ kW}}$$</p>
+            </div>
+        </div>
+
+        <!-- ================= SET 2 ================= -->
+        <div class="set-banner">SET 2: Final Examination (Sesi II 2024/2025)</div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>1(a) Definitions of Basic Concepts</span>
+                <span class="marks-badge">6 Marks</span>
+            </div>
+            <p>Define the following terms:</p>
+            <ol type="i">
+                <li>Boundary [2 Marks]</li>
+                <li>Energy conversion [2 Marks]</li>
+                <li>Process [2 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s2_1a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s2_1a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> Refer to fundamental definitions in Chapter 1.</div>
+                <ul>
+                    <li><strong>Boundary:</strong> The real or imaginary surface that separates the system from its surroundings.</li>
+                    <li><strong>Energy conversion:</strong> The process of changing energy from one form (e.g., thermal, chemical) into another form (e.g., mechanical, electrical).</li>
+                    <li><strong>Process:</strong> Any change that a thermodynamic system undergoes from one equilibrium state to another.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>2(a) Isothermal Oxygen Compression</span>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+            <p>$0.5\text{ kg}$ of oxygen ($M = 32\text{ kg/kmol}$) is compressed isothermally from $1.013\text{ bar}$ and $25^\circ\text{C}$ ($298\text{ K}$) to $5.5\text{ bar}$. ($R_u = 8.3145\text{ kJ/kmol}\cdot\text{K}$). Calculate:</p>
+            <ol type="i">
+                <li>Specific gas constant ($R$). [2 Marks]</li>
+                <li>Work input ($W$). [4 Marks]</li>
+                <li>Heat transfer ($Q$). [2 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s2_2a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s2_2a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $R = R_u / M$. For isothermal process of an ideal gas, $\Delta U = 0 \implies Q = W$.</div>
+                <p><strong>Step 1: Specific Gas Constant ($R$)</strong><br>$$R = \frac{8.3145}{32} = \mathbf{0.2598\text{ kJ/kg}\cdot\text{K}}$$</p>
+                <p><strong>Step 2: Work Input ($W$)</strong><br>$$W = m R T \ln\left(\frac{P_1}{P_2}\right) = 0.5 \times 0.2598 \times 298 \times \ln\left(\frac{1.013}{5.5}\right) = 38.71 \times (-1.6917) = \mathbf{-65.48\text{ kJ}}$$</p>
+                <p><strong>Step 3: Heat Transfer ($Q$)</strong><br>$$Q = W = \mathbf{-65.48\text{ kJ (Heat Rejected)}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>3(a) Compressor Steady Flow Analysis</span>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+            <p>Air flows through a steady compressor at $\dot{m} = 30\text{ kg/s}$. Inlet properties: $h_1 = 1744.4\text{ kJ/kg}$, $C_1 = 15\text{ m/s}$, $v_1 = 0.34\text{ m}^3/\text{kg}$. Outlet properties: $h_2 = 3556\text{ kJ/kg}$, $C_2 = 35\text{ m/s}$. Heat loss to atmosphere is $\dot{Q} = -30\text{ kW}$. Calculate:</p>
+            <ol type="i">
+                <li>Power required ($\dot{W}$) in kW. [5 Marks]</li>
+                <li>Compressor's inlet cross-sectional area ($A_1$). [3 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s2_3a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s2_3a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> Apply SFEE: $\dot{Q} - \dot{W} = \dot{m}\left[(h_2 - h_1) + \frac{C_2^2 - C_1^2}{2000}\right]$. Continuity: $\dot{m} = \frac{A_1 C_1}{v_1}$.</div>
+                <p><strong>Step 1: Power Required ($\dot{W}$)</strong><br>
+                $$\Delta h = 3556 - 1744.4 = 1811.6\text{ kJ/kg}$$
+                $$\Delta KE = \frac{35^2 - 15^2}{2000} = \frac{1225 - 225}{2000} = 0.5\text{ kJ/kg}$$
+                $$-30 - \dot{W} = 30 \times (1811.6 + 0.5) = 30 \times 1812.1 = 54363$$
+                $$\dot{W} = -30 - 54363 = \mathbf{-54,393\text{ kW (or } 54.39\text{ MW input)}}$$</p>
+                <p><strong>Step 2: Inlet Area ($A_1$)</strong><br>
+                $$A_1 = \frac{\dot{m} v_1}{C_1} = \frac{30 \times 0.34}{15} = \mathbf{0.68\text{ m}^2}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>4(a) Carnot Heat Engine Performance</span>
+                <span class="marks-badge">6 Marks</span>
+            </div>
+            <p>A Carnot heat engine operates between temperatures of $999\text{ K}$ and $376\text{ K}$. It receives heat at a rate of $810\text{ kJ/s}$ from the hot reservoir. Calculate:</p>
+            <ol type="i">
+                <li>Thermal efficiency ($\eta_{th}$). [3 Marks]</li>
+                <li>The rate of heat rejected to the cold reservoir ($\dot{Q}_L$). [3 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s2_4a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s2_4a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $\eta_{th, Carnot} = 1 - \frac{T_L}{T_H}$. $\dot{Q}_L = \dot{Q}_H (1 - \eta_{th}) = \dot{Q}_H \left(\frac{T_L}{T_H}\right)$.</div>
+                <p><strong>Step 1: Thermal Efficiency</strong><br>$$\eta_{th} = 1 - \frac{376}{999} = 1 - 0.3764 = 0.6236 \implies \mathbf{62.36\%}$$</p>
+                <p><strong>Step 2: Heat Rejected Rate ($\dot{Q}_L$)</strong><br>$$\dot{Q}_L = \dot{Q}_H \times \left(\frac{T_L}{T_H}\right) = 810 \times \left(\frac{376}{999}\right) = \mathbf{304.86\text{ kW}}$$</p>
+            </div>
+        </div>
+
+        <!-- ================= SET 3 ================= -->
+        <div class="set-banner">SET 3: Final Examination (Sesi I 2023/2024)</div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>1(a) Constant Temperature Ideal Gas Cooling</span>
+                <span class="marks-badge">12 Marks</span>
+            </div>
+            <p>$0.55\text{ kg}$ of a perfect gas ($M = 44.01\text{ kg/kmol}$) is contained in a volume of $V_1 = 0.10\text{ m}^3$ at a pressure of $P_1 = 4\text{ bar}$ ($400\text{ kPa}$). It is cooled at constant temperature until its pressure drops to $P_2 = 1.2\text{ bar}$ ($120\text{ kPa}$). Calculate:</p>
+            <ol type="i">
+                <li>Initial temperature ($T_1$). [6 Marks]</li>
+                <li>Final volume ($V_2$). [6 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s3_1a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s3_1a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $R = R_u / M = 8.3144 / 44.01 = 0.1889\text{ kJ/kg}\cdot\text{K}$. Use $P_1 V_1 = m R T_1$ and $P_1 V_1 = P_2 V_2$.</div>
+                <p><strong>Step 1: Initial Temperature ($T_1$)</strong><br>
+                $$T_1 = \frac{P_1 V_1}{m R} = \frac{400 \times 0.10}{0.55 \times 0.1889} = \frac{40}{0.1039} = \mathbf{384.98\text{ K (or } 111.98^\circ\text{C)}}$$</p>
+                <p><strong>Step 2: Final Volume ($V_2$)</strong><br>
+                $$P_1 V_1 = P_2 V_2 \implies 400 \times 0.10 = 120 \times V_2 \implies V_2 = \frac{40}{120} = \mathbf{0.333\text{ m}^3}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>2(a) Work Done on Closed System ($CO_2$)</span>
+                <span class="marks-badge">11 Marks</span>
+            </div>
+            <p>$1\text{ kg}$ of $CO_2$ gas in a closed system undergoes a reversible constant pressure process (Isobaric). During this process, internal energy decreases by $42\text{ kJ}$ ($\Delta U = -42\text{ kJ}$). Given $c_p = 840\text{ J/kg}\cdot^\circ\text{C}$ and $c_v = 600\text{ J/kg}\cdot^\circ\text{C}$, calculate the work done ($W$).</p>
+            <button class="toggle-btn" onclick="toggleSolution('s3_2a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s3_2a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $\Delta U = m c_v (T_2 - T_1)$. Find $\Delta T$, then calculate $Q = m c_p (T_2 - T_1)$ and use First Law $W = Q - \Delta U$.</div>
+                <p><strong>Step 1: Temperature Change ($\Delta T$)</strong><br>
+                $$\Delta U = m c_v (T_2 - T_1) \implies -42,000\text{ J} = 1 \times 600 \times \Delta T \implies \Delta T = -70^\circ\text{C}$$</p>
+                <p><strong>Step 2: Heat Transfer ($Q$)</strong><br>
+                $$Q = m c_p \Delta T = 1 \times 840 \times (-70) = -58,800\text{ J} = -58.8\text{ kJ}$$</p>
+                <p><strong>Step 3: Work Done ($W$)</strong><br>
+                $$Q - W = \Delta U \implies -58.8 - W = -42 \implies W = -58.8 + 42 = \mathbf{-16.8\text{ kJ (Work Input)}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>3(a) Carnot Cycle Power Plant</span>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+            <p>A steam power plant operates on a Carnot cycle between $P_{\text{boiler}} = 40\text{ bar}$ ($T_1 = 250.4^\circ\text{C} = 523.4\text{ K}$, $h_{fg1} = 1714\text{ kJ/kg}$) and $P_{\text{condenser}} = 0.04\text{ bar}$ ($T_2 = 29^\circ\text{C} = 302\text{ K}$). Calculate:</p>
+            <ol type="i">
+                <li>Thermal efficiency ($\eta_{th, Carnot}$). [4 Marks]</li>
+                <li>Net work output per kg ($W_{net}$). [4 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s3_3a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s3_3a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $\eta_{Carnot} = 1 - \frac{T_2}{T_1}$. $Q_{in} = h_{fg1}$. $W_{net} = \eta \cdot Q_{in}$.</div>
+                <p><strong>Step 1: Thermal Efficiency</strong><br>$$\eta_{\text{Carnot}} = 1 - \frac{302}{523.4} = 1 - 0.577 = 0.423 \implies \mathbf{42.3\%}$$</p>
+                <p><strong>Step 2: Net Work Output</strong><br>$$W_{net} = \eta \times Q_{in} = 0.423 \times 1714 = \mathbf{725.02\text{ kJ/kg}}$$</p>
+            </div>
+        </div>
+
+        <!-- ================= SET 4 ================= -->
+        <div class="set-banner">SET 4: Model Final Examination (Comprehensive Practice)</div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>1(a) Superheated Steam Property Interpolation</span>
+                <span class="marks-badge">12 Marks</span>
+            </div>
+            <p>Steam at $P = 30\text{ bar}$ has a specific enthalpy of $h = 3080\text{ kJ/kg}$. Using superheated steam tables ($30\text{ bar}$: $300^\circ\text{C} \rightarrow h=2995$, $350^\circ\text{C} \rightarrow h=3117$, $v=0.0905\text{ m}^3/\text{kg}$), determine:</p>
+            <ol type="i">
+                <li>Temperature of the steam ($T$). [6 Marks]</li>
+                <li>Specific volume ($v$) by interpolation. [6 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s4_1a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s4_1a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> Single linear interpolation between $300^\circ\text{C}$ and $350^\circ\text{C}$.</div>
+                <p><strong>Step 1: Calculate Temperature ($T$)</strong><br>
+                $$\frac{T - 300}{350 - 300} = \frac{3080 - 2995}{3117 - 2995} \implies \frac{T - 300}{50} = \frac{85}{122} = 0.6967$$
+                $$T = 300 + (50 \times 0.6967) = \mathbf{334.84^\circ\text{C}}$$</p>
+                <p><strong>Step 2: Calculate Specific Volume ($v$)</strong><br>
+                At $300^\circ\text{C}, v_1 = 0.0811\text{ m}^3/\text{kg}$. At $350^\circ\text{C}, v_2 = 0.0905\text{ m}^3/\text{kg}$.<br>
+                $$v = 0.0811 + 0.6967 \times (0.0905 - 0.0811) = 0.0811 + 0.00655 = \mathbf{0.08765\text{ m}^3/\text{kg}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>2(a) Adiabatic Expansion in Piston-Cylinder</span>
+                <span class="marks-badge">12 Marks</span>
+            </div>
+            <p>Air ($m = 0.2\text{ kg}$, $\gamma = 1.4$, $R = 0.287\text{ kJ/kg}\cdot\text{K}$) expands adiabatically from $P_1 = 12\text{ bar}$, $T_1 = 600\text{ K}$ to a final volume $V_2 = 3 V_1$. Calculate:</p>
+            <ol type="i">
+                <li>Initial volume ($V_1$). [3 Marks]</li>
+                <li>Final pressure ($P_2$). [3 Marks]</li>
+                <li>Final temperature ($T_2$). [3 Marks]</li>
+                <li>Work done ($W$). [3 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s4_2a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s4_2a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $P_1 V_1^\gamma = P_2 V_2^\gamma$ and $T_2 = T_1 (V_1/V_2)^{\gamma-1}$.</div>
+                <p><strong>Step 1: Initial Volume ($V_1$)</strong><br>$$V_1 = \frac{0.2 \times 0.287 \times 600}{1200} = \mathbf{0.0287\text{ m}^3}$$</p>
+                <p><strong>Step 2: Final Pressure ($P_2$)</strong><br>$$P_2 = P_1 \left(\frac{V_1}{V_2}\right)^\gamma = 12 \times \left(\frac{1}{3}\right)^{1.4} = 12 \times 0.2149 = \mathbf{2.58\text{ bar (258 kPa)}}$$</p>
+                <p><strong>Step 3: Final Temperature ($T_2$)</strong><br>$$T_2 = 600 \times \left(\frac{1}{3}\right)^{0.4} = 600 \times 0.6444 = \mathbf{386.64\text{ K}}$$</p>
+                <p><strong>Step 4: Work Done ($W$)</strong><br>$$W = \frac{m R (T_1 - T_2)}{\gamma - 1} = \frac{0.2 \times 0.287 \times (600 - 386.64)}{1.4 - 1} = \frac{12.248}{0.4} = \mathbf{30.62\text{ kJ}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>3(a) Insulated Steam Nozzle</span>
+                <span class="marks-badge">10 Marks</span>
+            </div>
+            <p>Steam enters an insulated nozzle at $h_1 = 3038\text{ kJ/kg}$ with velocity $C_1 = 30\text{ m/s}$. Mass flow rate is $\dot{m} = 2.5\text{ kg/s}$. At exit, $h_2 = 2700\text{ kJ/kg}$ and $v_2 = 0.22\text{ m}^3/\text{kg}$. Calculate:</p>
+            <ol type="i">
+                <li>Exit velocity ($C_2$). [5 Marks]</li>
+                <li>Exit area ($A_2$). [5 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s4_3a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s4_3a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> SFEE: $h_1 + \frac{C_1^2}{2000} = h_2 + \frac{C_2^2}{2000}$. Continuity: $\dot{m} = \frac{A_2 C_2}{v_2}$.</div>
+                <p><strong>Step 1: Exit Velocity ($C_2$)</strong><br>$$3038 + \frac{30^2}{2000} = 2700 + \frac{C_2^2}{2000} \implies 338.45 = \frac{C_2^2}{2000} \implies \mathbf{C_2 = 822.74\text{ m/s}}$$</p>
+                <p><strong>Step 2: Exit Area ($A_2$)</strong><br>$$A_2 = \frac{2.5 \times 0.22}{822.74} = \mathbf{0.000668\text{ m}^2\text{ (or } 6.68\text{ cm}^2\text{)}}$$</p>
+            </div>
+        </div>
+
+        <div class="exam-block">
+            <div class="question-header">
+                <span>4(a) Rankine Cycle Power Plant</span>
+                <span class="marks-badge">15 Marks</span>
+            </div>
+            <p>A Rankine cycle operates between $P_{\text{boiler}} = 30\text{ bar}$ ($h_1 = 2804\text{ kJ/kg}$, $s_1 = 6.187\text{ kJ/kg}\cdot\text{K}$) and $P_{\text{condenser}} = 0.05\text{ bar}$ ($h_f = 138$, $h_{fg} = 2423$, $s_f = 0.476$, $s_{fg} = 7.918$, $v_f = 0.001005$). Calculate:</p>
+            <ol type="i">
+                <li>Dryness fraction at turbine exit ($x_2$). [4 Marks]</li>
+                <li>Turbine work ($W_T$) and Pump work ($W_P$). [5 Marks]</li>
+                <li>Thermal efficiency ($\eta_{\text{Rankine}}$). [6 Marks]</li>
+            </ol>
+            <button class="toggle-btn" onclick="toggleSolution('s4_4a')">Show Solution & Step-by-Step Guide</button>
+            <div id="s4_4a" class="solution-box">
+                <div class="hint-text"><strong>Hint:</strong> $s_1 = s_2 = s_f + x_2 s_{fg}$. $W_P = v_f (P_4 - P_3)$.</div>
+                <p><strong>Step 1: Dryness Fraction ($x_2$)</strong><br>$$6.187 = 0.476 + 7.918 x_2 \implies 5.711 = 7.918 x_2 \implies \mathbf{x_2 = 0.7212}$$</p>
+                <p><strong>Step 2: Turbine & Pump Work</strong><br>
+                $$h_2 = 138 + 0.7212(2423) = 138 + 1747.47 = 1885.47\text{ kJ/kg}$$
+                $$W_T = 2804 - 1885.47 = \mathbf{918.53\text{ kJ/kg}}$$
+                $$W_P = 0.001005 \times (3000 - 5) = \mathbf{3.01\text{ kJ/kg}} \implies h_4 = 138 + 3.01 = 141.01\text{ kJ/kg}$$</p>
+                <p><strong>Step 3: Thermal Efficiency ($\eta_{\text{Rankine}}$)</strong><br>
+                $$W_{net} = 918.53 - 3.01 = 915.52\text{ kJ/kg}$$
+                $$Q_{in} = h_1 - h_4 = 2804 - 141.01 = 2662.99\text{ kJ/kg}$$
+                $$\eta_{\text{Rankine}} = \frac{915.52}{2662.99} = 0.3438 \implies \mathbf{34.38\%}$$</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSolution(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === "block") {
+                el.style.display = "none";
+            } else {
+                el.style.display = "block";
+                if (window.MathJax) {
+                    MathJax.typesetPromise([el]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

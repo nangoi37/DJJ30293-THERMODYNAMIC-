@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1 - DJJ30293 THERMODYNAMIC</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --accent: #e9ecef; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        
+        .navbar { background: var(--primary); display: flex; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .navbar a { color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
+        .navbar a:hover { background: rgba(255,255,255,0.1); }
+        .navbar a.active { border-bottom: 3px solid #ffd700; background: rgba(255,255,255,0.15); }
+        
+        .container { max-width: 850px; margin: 20px auto; padding: 25px; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; border: 1px solid #eaeaea; }
+        
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0; border-radius: 8px; background: #000; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        h1 { color: #222; border-bottom: 3px solid var(--primary); padding-bottom: 5px; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px;}
+        h2 { color: var(--primary); border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 35px; }
+        h3 { color: #444; margin-top: 25px; border-left: 4px solid var(--primary); padding-left: 10px; background: #f8f9fa; padding-top: 4px; padding-bottom: 4px;}
+        p { text-align: justify; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+
+        .table-container { overflow-x: auto; margin: 20px 0; }
+        .styled-table { border-collapse: collapse; min-width: 100%; font-size: 0.95rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); }
+        .styled-table thead tr { background-color: var(--primary); color: #ffffff; text-align: left; }
+        .styled-table th, .styled-table td { padding: 12px 15px; border-bottom: 1px solid #ddd; }
+        .styled-table tbody tr:nth-of-type(even) { background-color: #f9f9f9; }
+
+        .concept-box { background: var(--accent); border-left: 4px solid var(--primary); padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; overflow-x: auto; font-size: 1.05rem; }
+        .rule-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; font-size: 1.05rem; }
+        .step-box { background: #fdfdfe; border: 1px solid #dee2e6; padding: 15px; margin: 15px 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.04); }
+        .step-box h4 { margin-top: 0; color: var(--primary); font-size: 1.05rem; border-bottom: 1px dashed #ccc; padding-bottom: 5px; }
+        
+        .img-container { text-align: center; margin: 25px 0; background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .img-container svg { max-width: 100%; height: auto; }
+        .img-caption { font-size: 0.9rem; color: #666; margin-top: 15px; font-style: italic; border-top: 1px solid #eee; padding-top: 10px; }
+
+        .calculator { background: #fff3cd; border: 2px solid #ffc107; padding: 25px; border-radius: 8px; margin: 40px 0; }
+        .calculator h3 { margin-top: 0; border-bottom: 2px solid #e0a800; color: #856404; padding-bottom: 5px; }
+        input, select, button.calc-btn { padding: 12px; margin: 8px 0; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .calc-btn { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.3s; margin-top: 15px; text-transform: uppercase; }
+        .calc-btn:hover { background: #004494; }
+        .solution-step { background: white; padding: 15px; margin-top: 15px; border-radius: 4px; border: 1px dashed #ccc; font-family: monospace; white-space: pre-wrap; font-size: 15px; overflow-x: auto; display: none;}
+
+        .quiz-btn-container { text-align: center; margin: 40px 0 20px 0; border-top: 2px dashed #ddd; padding-top: 30px; }
+        .quiz-btn { background: #28a745; color: white; border: none; font-size: 18px; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.15); transition: 0.3s; text-transform: uppercase; }
+        .quiz-btn:hover { background: #218838; transform: translateY(-2px); }
+        
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; border: none; background: none; color: #888; line-height: 1; padding: 0; }
+        .close-btn:hover { color: #333; }
+        .quiz-header { border-bottom: 2px solid var(--primary); margin-bottom: 20px; padding-bottom: 10px; color: var(--primary); text-align: left; }
+        
+        .question-block { margin-bottom: 25px; padding: 18px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #ccc; text-align: left;}
+        .question-text { font-weight: bold; margin-bottom: 12px; font-size: 1.05rem; }
+        .option-label { display: block; margin-bottom: 8px; cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.2s; border: 1px solid transparent; }
+        .option-label:hover { background: #e2e6ea; border: 1px solid #dae0e5; }
+        .option-label input { width: auto; margin-right: 12px; transform: scale(1.2); }
+        
+        .correct-ans { background-color: #d4edda !important; border: 1px solid #c3e6cb !important; color: #155724; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; border: 1px solid #f5c6cb !important; color: #721c24; text-decoration: line-through; }
+        #quiz-result { text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 25px; padding: 15px; border-radius: 8px; display: none; }
+        #submitQuizBtn { background: var(--primary); color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; width: 100%; text-transform: uppercase;}
+        #submitQuizBtn:hover { background: #004494; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chapter1.html" class="active">Ch 1</a>
+        <a href="chapter2.html">Ch 2</a>
+        <a href="chapter3.html">Ch 3</a>
+        <a href="chapter4.html" style="border-right: none;">Ch 4</a>
+    </div>
+
+    <div class="container">
+        <h1>Chapter 1: Fundamental Concepts</h1>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/2dmjhNISOgY" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <h2>1.1 Applications of Thermodynamics</h2>
+        <p>Thermodynamics is applied in numerous everyday and industrial applications. Some common application areas include the human body, air conditioning systems, airplanes, car radiators, power plants, and refrigeration systems.</p>
+        
+        <div class="img-container">
+            <!-- Blue and Red colored icons -->
+            <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="90" r="70" fill="#e9f2fb" />
+                <circle cx="300" cy="90" r="70" fill="#e9f2fb" />
+                <circle cx="500" cy="90" r="70" fill="#e9f2fb" />
+                <circle cx="700" cy="90" r="70" fill="#e9f2fb" />
+                
+                <circle cx="100" cy="60" r="18" fill="#0056b3" />
+                <path d="M 75 130 C 75 80, 125 80, 125 130 Z" fill="#0056b3" />
+                <path d="M 60 70 Q 50 80 60 90" fill="none" stroke="#d9534f" stroke-width="3" />
+                <path d="M 50 60 Q 30 80 50 100" fill="none" stroke="#d9534f" stroke-width="3" />
+                <path d="M 140 70 Q 150 80 140 90" fill="none" stroke="#d9534f" stroke-width="3" />
+                <path d="M 150 60 Q 170 80 150 100" fill="none" stroke="#d9534f" stroke-width="3" />
+                <text x="100" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3">Human Body</text>
+                
+                <rect x="250" y="60" width="100" height="40" rx="5" fill="#0056b3" />
+                <line x1="260" y1="70" x2="340" y2="70" stroke="#fff" stroke-width="2" />
+                <line x1="260" y1="80" x2="340" y2="80" stroke="#fff" stroke-width="2" />
+                <line x1="260" y1="90" x2="340" y2="90" stroke="#fff" stroke-width="2" />
+                <path d="M 270 110 Q 260 130 270 150" fill="none" stroke="#d9534f" stroke-width="4" stroke-linecap="round" />
+                <path d="M 300 110 Q 290 130 300 150" fill="none" stroke="#d9534f" stroke-width="4" stroke-linecap="round" />
+                <path d="M 330 110 Q 320 130 330 150" fill="none" stroke="#d9534f" stroke-width="4" stroke-linecap="round" />
+                <text x="300" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3">AC Systems</text>
+                
+                <path d="M 450 90 L 530 90 C 550 90, 550 100, 530 100 L 450 100 Z" fill="#0056b3" />
+                <polygon points="490,95 460,60 475,60 500,95" fill="#0056b3" />
+                <polygon points="490,95 460,130 475,130 500,95" fill="#0056b3" />
+                <polygon points="460,90 450,75 455,75 465,90" fill="#0056b3" />
+                <polygon points="460,100 450,115 455,115 465,100" fill="#0056b3" />
+                <line x1="430" y1="95" x2="445" y2="95" stroke="#d9534f" stroke-width="3" stroke-linecap="round" />
+                <line x1="420" y1="90" x2="435" y2="90" stroke="#d9534f" stroke-width="3" stroke-linecap="round" />
+                <line x1="420" y1="100" x2="435" y2="100" stroke="#d9534f" stroke-width="3" stroke-linecap="round" />
+                <text x="500" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3">Aviation</text>
+                
+                <path d="M 680 130 Q 700 80 690 50 L 730 50 Q 720 80 740 130 Z" fill="#d9534f" />
+                <rect x="660" y="100" width="35" height="30" fill="#0056b3" />
+                <rect x="660" y="80" width="8" height="20" fill="#0056b3" />
+                <circle cx="710" cy="35" r="10" fill="#0056b3" opacity="0.8" />
+                <circle cx="700" cy="25" r="12" fill="#0056b3" opacity="0.6" />
+                <circle cx="720" cy="20" r="9" fill="#0056b3" opacity="0.4" />
+                <text x="700" y="195" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0056b3">Power Plants</text>
+            </svg>
+            <div class="img-caption">Figure 1.1: Common application areas of thermodynamics.</div>
+        </div>
+
+        <h2>1.2 Dimensions, SI & Imperial Units</h2>
+        <p>The following tables list the most common units and dimensions used in both the International System of Units (SI) and Imperial/USCS systems:</p>
+        
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Terminology</th>
+                        <th>Symbol</th>
+                        <th>Dimensions</th>
+                        <th>Imperial Units</th>
+                        <th>SI-units</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Acceleration</td><td>a</td><td>L/T²</td><td>ft/s²</td><td>m/s²</td></tr>
+                    <tr><td>Area</td><td>A</td><td>L²</td><td>ft²</td><td>m²</td></tr>
+                    <tr><td>Density</td><td>$\rho$</td><td>FT²/L⁴</td><td>lb s²/ft⁴</td><td>kg s²/m⁴</td></tr>
+                    <tr><td>Diameter</td><td>D</td><td>L</td><td>ft</td><td>m</td></tr>
+                    <tr><td>Flow rate</td><td>$\nu$</td><td>L³/T</td><td>ft³/s</td><td>m³/s</td></tr>
+                    <tr><td>Force</td><td>F</td><td>F</td><td>lb</td><td>N</td></tr>
+                    <tr><td>Length</td><td>L</td><td>L</td><td>ft</td><td>m</td></tr>
+                    <tr><td>Mass</td><td>m</td><td>FT²/L</td><td>lb s²/ft</td><td>kg</td></tr>
+                    <tr><td>Pressure</td><td>P</td><td>F/L²</td><td>lb/ft²</td><td>Pa</td></tr>
+                    <tr><td>Radius</td><td>r</td><td>L</td><td>ft</td><td>m</td></tr>
+                    <tr><td>Specific weight</td><td>$\omega$</td><td>F/L³</td><td>lb/ft³</td><td>kg/m³</td></tr>
+                    <tr><td>Temperature</td><td>T</td><td>T</td><td>degree F</td><td>degree K</td></tr>
+                    <tr><td>Time</td><td>T</td><td>T</td><td>s</td><td>s</td></tr>
+                    <tr><td>Velocity</td><td>C</td><td>L/T</td><td>ft/s</td><td>m/s</td></tr>
+                    <tr><td>Weight</td><td>w</td><td>F</td><td>lbf</td><td>N</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Fundamental Units & Conversions</h3>
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Symbol</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Area</td><td>meter square</td><td>m²</td><td></td></tr>
+                    <tr><td>Volume</td><td>meter cube</td><td>m³</td><td>1 m³ = $1 \times 10^3$ litre</td></tr>
+                    <tr><td>Velocity</td><td>meter per second</td><td>m/s</td><td></td></tr>
+                    <tr><td>Acceleration</td><td>Meter per second squared</td><td>m/s²</td><td></td></tr>
+                    <tr><td>Density</td><td>kilogram / meter cube</td><td>kg/m³</td><td></td></tr>
+                    <tr><td>Force</td><td>Newton</td><td>N</td><td>1 N = 1 kg m/s²</td></tr>
+                    <tr><td>Pressure</td><td>Newton / meter square</td><td>N/m²</td><td>1 N/m² = 1 Pascal<br>1 bar = $10^5$ N/m² = $10^2$ kN/m²</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Multiplying Factors</h3>
+        <p>Prefixes are used to simplify large or small numbers:</p>
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Multiplying Factor</th>
+                        <th>Scientific</th>
+                        <th>Prefix</th>
+                        <th>Symbol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1,000,000,000,000</td><td>$10^{12}$</td><td>tera</td><td>T</td></tr>
+                    <tr><td>1,000,000,000</td><td>$10^9$</td><td>giga</td><td>G</td></tr>
+                    <tr><td>1,000,000</td><td>$10^6$</td><td>mega</td><td>M</td></tr>
+                    <tr><td>1,000</td><td>$10^3$</td><td>kilo</td><td>k</td></tr>
+                    <tr><td>100</td><td>$10^2$</td><td>hector</td><td>h</td></tr>
+                    <tr><td>10</td><td>$10^1$</td><td>deca</td><td>da</td></tr>
+                    <tr><td>0.1</td><td>$10^{-1}$</td><td>desi</td><td>d</td></tr>
+                    <tr><td>0.01</td><td>$10^{-2}$</td><td>centi</td><td>c</td></tr>
+                    <tr><td>0.001</td><td>$10^{-3}$</td><td>milli</td><td>m</td></tr>
+                    <tr><td>0.000 001</td><td>$10^{-6}$</td><td>micro</td><td>$\mu$</td></tr>
+                    <tr><td>0.000 000 001</td><td>$10^{-9}$</td><td>nano</td><td>n</td></tr>
+                    <tr><td>0.000 000 000 001</td><td>$10^{-12}$</td><td>pico</td><td>p</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>1.3 Dimensional Homogeneity</h2>
+        <p>In engineering, all equations must be dimensionally homogeneous. That is, every term in an equation must have the same unit.</p>
+        
+        <div class="step-box">
+            <h4>Example 1: Spotting Errors from Unit Inconsistencies</h4>
+            <p>While solving a problem, a person ended up with the following equation at some stage: <br>
+            $E = 25 \text{ kJ} + 7 \text{ kJ/kg}$<br>
+            where E is the total energy and has the unit of kilojoules. Determine how to correct the error and discuss what may have caused it.</p>
+            <p><strong>Analysis:</strong> The two terms on the right-hand side do not have the same units, and therefore they cannot be added to obtain the total energy. Multiplying the last term by mass will eliminate the kilograms in the denominator, and the whole equation will become dimensionally homogeneous; that is, every term in the equation will have the same unit.</p>
+            <p><strong>Discussion:</strong> Obviously this error was caused by forgetting to multiply the last term by mass at an earlier stage.</p>
+        </div>
+
+        <h2>1.4 Example Unit Conversions</h2>
+        <p>Note how the units 'cancel' in the middle terms, leaving only the desired quantities:</p>
+        
+        <div class="step-box">
+            <h4>Example: Velocity Conversion</h4>
+            <p>Convert 1 km/h to m/s.</p>
+            <p>$\frac{1\text{ km}}{\text{h}} = \frac{1\text{ km}}{\text{h}} \times \frac{1000\text{ m}}{1\text{ km}} \times \frac{1\text{ h}}{3600\text{ s}}$<br>
+            $= \frac{1000\text{ m}}{3600\text{ s}} = 0.278\text{ m/s}$</p>
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Pressure Conversion</h4>
+            <p>Convert 3 N/cm² to kN/m².<br>
+            Given: 1 kN = 1000 N, and 1 m² = $10^4$ cm².</p>
+            <p>$\frac{3\text{ N}}{\text{cm}^2} = \frac{3\text{ N}}{\text{cm}^2} \times \frac{10^4\text{ cm}^2}{1\text{ m}^2} \times \frac{1\text{ kN}}{1000\text{ N}}$<br>
+            $= \frac{3 \times 10^4\text{ kN}}{1000\text{ m}^2} = 30\text{ kN/m}^2$</p>
+        </div>
+
+        <div class="step-box">
+            <h4>Example: Density Concentration Conversion</h4>
+            <p>Convert 15 milligram per litre to kg/m³.<br>
+            Given: 1 kg = 1,000,000 mg, and 1 m³ = 1000 litre.</p>
+            <p>$\frac{15\text{ mg}}{\text{litre}} = \frac{15\text{ mg}}{\text{litre}} \times \frac{1\text{ kg}}{1,000,000\text{ mg}} \times \frac{1000\text{ litre}}{1\text{ m}^3}$<br>
+            $= 15 \times 10^{-3}\text{ kg/m}^3$</p>
+        </div>
+
+        <h2>1.5 System, Boundary, and Surrounding</h2>
+        <ul>
+            <li><strong>System:</strong> A quantity of matter or a region in space chosen for study. For example, the fluid contained by the cylinder head, cylinder walls and the piston may be said to be the system.</li>
+            <li><strong>Surroundings:</strong> The mass or region outside the system. The surroundings may be affected by changes within the system.</li>
+            <li><strong>Boundary:</strong> The surface of separation between the system and its surroundings. It may be the cylinder and the piston or an imaginary surface.</li>
+        </ul>
+
+        <p>Thermodynamics systems consist of two systems which are either to be close or open, depending on whether a fixed mass or a fixed volume in space is chosen for study.</p>
+        
+        <ul>
+            <li><strong>Close System:</strong> A close system (also known as a control mass) consists of a fixed amount of mass, and no mass can cross its boundary. That is, no mass can enter or leave a close system. But energy, in the form of heat or work can cross the boundary, and the volume of a close system does not have to be fixed. Examples of closed systems are sealed tanks and piston cylinder devices.</li>
+            <li><strong>Open System:</strong> An open system, or a control volume, is a properly selected region in space. It usually encloses a device, which involves mass flow such as a boiler, compressor, turbine or nozzle. Flow through these devices is best studied by selecting the region within the device as the control volume. Both mass and energy can cross the boundary of a control volume. Examples are pumps, compressors, turbines, valves, and heat exchangers.</li>
+        </ul>
+
+        <div class="img-container">
+            <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowRed2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#d9534f" />
+                    </marker>
+                </defs>
+                <rect x="0" y="0" width="500" height="250" fill="#f8f9fa" rx="10" />
+                <text x="80" y="40" font-family="sans-serif" font-size="16" font-style="italic" fill="#0056b3">SURROUNDINGS</text>
+                <path d="M 150 120 C 180 50, 320 50, 350 120 C 380 190, 120 190, 150 120 Z" fill="#e9f2fb" stroke="#0056b3" stroke-width="4" stroke-dasharray="8,4" />
+                <text x="250" y="130" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#0056b3">SYSTEM</text>
+                <text x="380" y="80" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d9534f">BOUNDARY</text>
+                <path d="M 375 85 L 342 101" stroke="#d9534f" stroke-width="3" marker-end="url(#arrowRed2)" />
+            </svg>
+            <div class="img-caption">Figure 1.2: System, surroundings and boundary.</div>
+        </div>
+
+        <h2>1.6 Properties and State of a System</h2>
+        <p>A property is any characteristic of a system, such as pressure P, temperature T, volume V, and mass m. Properties are considered to be either intensive or extensive:</p>
+        <ul>
+            <li><strong>Intensive Properties:</strong> Are those that are independent of the mass of a system, such as temperature, pressure, and density.</li>
+            <li><strong>Extensive Properties:</strong> Values depend on the size of the system. Total mass, total volume, and total momentum are some examples of extensive properties.</li>
+        </ul>
+        <p><strong>State:</strong> The state of a thermodynamic system refers to its condition at a specific time, as defined by its properties. When all properties are known, the state is fully determined.</p>
+
+        <h2>1.7 Thermodynamic Equilibrium</h2>
+        <p>A system is in thermodynamic equilibrium if there are no unbalanced forces or gradients within the system. It requires the following:</p>
+        <ul>
+            <li><strong>Thermal Equilibrium:</strong> Uniform temperature throughout the system, with no heat flow. When a body is brought into contact with another body that is at a different temperature, heat is transferred from the body at higher temperature to the one at lower temperature until both bodies attain the same temperature. At that point, the heat transfer stops, and the two bodies are said to have reached thermal equilibrium.</li>
+            <li><strong>Mechanical Equilibrium:</strong> Uniform pressure, or no pressure gradients causing movement.</li>
+            <li><strong>Chemical Equilibrium:</strong> No net chemical reactions or mass transfer between phases.</li>
+            <li><strong>Phase Equilibrium:</strong> Stable phase distribution, with no net phase change.</li>
+        </ul>
+
+        <h2>1.8 Path, Process, and Cycle</h2>
+        <ul>
+            <li><strong>Path:</strong> The series of states through which a system passes during a process.</li>
+            <li><strong>Process:</strong> Any change that a system undergoes from one equilibrium state to another. 
+                <ul>
+                    <li><em>Reversible Process:</em> A process that can be reversed in order to obtain the initial state of a system. The reverse of the process should give the original state A and the properties of the surrounding should be the same (no change in thermodynamic properties).</li>
+                    <li><em>Irreversible Process:</em> A thermodynamic process that cannot be reversed in order to obtain the initial state of a system. Finite changes occur in the system, and there is no equilibrium in the system.</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p>The prefix iso- is often used to designate a process for which a particular property remains constant:</p>
+        <ul>
+            <li><strong>Isothermal process:</strong> Process during which the temperature T remains constant.</li>
+            <li><strong>Isobaric process:</strong> Process during which the pressure P remains constant.</li>
+            <li><strong>Isochoric (or isometric):</strong> Process is a process during which the specific volume v remains constant.</li>
+        </ul>
+
+        <p><strong>Cycle:</strong> A system is said to have undergone a cycle if it returns to its initial state at the end of the process. That is, for a cycle the initial and final states are identical.</p>
+
+        <h2>1.9 The Zeroth Law of Thermodynamics</h2>
+        <p>The zeroth law of thermodynamics states that if two bodies are in thermal equilibrium with a third body, they are also in thermal equilibrium with each other.</p>
+
+        <h2>1.10 Forms of Energy and Energy Conversion</h2>
+        <p>One important property of energy is its ability to change from one form to another form. For example, chemical energy from fossil fuels (coal, oil and natural gas) can be converted into heat energy when burned. The heat energy may be converted into kinetic energy in a gas turbine and finally into electrical energy by a generator.</p>
+        
+        <ul>
+            <li><strong>Heat energy:</strong> Also referred to as thermal energy.</li>
+            <li><strong>Electrical energy:</strong> Is really the effect of moving electrical charges from one point to another in a conductor.</li>
+            <li><strong>Chemical energy:</strong> Is the energy stored within chemical compounds. Fuels like coal, oil and natural gas contain chemical energy.</li>
+            <li><strong>Mechanical energy:</strong> Is the kind of energy that can do mechanical work directly. There are two kinds of mechanical energy:
+                <ul>
+                    <li><em>Kinetic energy:</em> Is the energy a body possesses by virtue of its motion. A moving body of mass, m kg and velocity C m/s possesses kinetic energy.</li>
+                    <li><em>Potential energy:</em> Is the energy of a body due to its position or shape.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>1.11 Heat Energy, Work Energy & Sign Convention</h2>
+        <p>The energy change of a system during a process is equal to the net work and heat transfer between the system and its surroundings. The difference between heat transfer and work: An energy interaction is heat transfer if its driving force is a temperature difference. Otherwise it is work.</p>
+
+        <ul>
+            <li><strong>Heat Energy (Q):</strong> Heat is the form of energy that is transferred between two systems (or a system and its surroundings) by virtue of a temperature difference. Temperature difference is the driving force for heat transfer. The larger the temperature difference, the higher is the rate of heat transfer. In a natural phenomena, heat is always flow from the high temperature body to the lower temperature body. Energy is recognized as heat transfer only as it crosses the system boundary. Units: Joule (J) or Nm.</li>
+            <li><strong>Work Energy (W):</strong> Work is the energy transfer associated with a force acting through a distance. Example: A rising piston, a rotating shaft, and an electric wire crossing the system boundaries are all associated with work interactions. Units: Joule (J) or Nm. If work is done on unit mass of a fluid, then the work done per kg of fluid has the units of Nm/kg or J/kg. The work (boundary) done on an adiabatic system is equal to the increase in the energy of the system.</li>
+        </ul>
+
+        <div class="rule-box">
+            <strong>Formal Sign Convention:</strong><br>
+            The generally accepted formal sign convention for heat and work interactions is as follows: heat transfer to a system and work done by a system are positive; heat transfer from a system and work done on a system are negative.
+        </div>
+
+        <div class="img-container">
+            <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowBlueIn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0056b3" /></marker>
+                    <marker id="arrowBlueOut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0056b3" /></marker>
+                    <marker id="arrowRedIn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d9534f" /></marker>
+                    <marker id="arrowRedOut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d9534f" /></marker>
+                </defs>
+
+                <!-- System Box -->
+                <rect x="150" y="75" width="200" height="150" fill="#fff" stroke="#0056b3" stroke-width="4" rx="8" />
+                <text x="250" y="155" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#0056b3">SYSTEM</text>
+                <text x="250" y="50" text-anchor="middle" font-family="sans-serif" font-size="16" font-style="italic" fill="#0056b3">Surroundings</text>
+
+                <!-- +Q (Heat In) -->
+                <path d="M 40 110 L 140 110" stroke="#d9534f" stroke-width="5" marker-end="url(#arrowRedOut)" />
+                <text x="90" y="95" font-family="sans-serif" font-weight="bold" fill="#d9534f" text-anchor="middle">Heat In (+Q)</text>
+
+                <!-- -W (Work In) -->
+                <path d="M 40 190 L 140 190" stroke="#0056b3" stroke-width="5" marker-end="url(#arrowBlueOut)" />
+                <text x="90" y="175" font-family="sans-serif" font-weight="bold" fill="#0056b3" text-anchor="middle">Work In (-W)</text>
+
+                <!-- -Q (Heat Out) -->
+                <path d="M 360 110 L 460 110" stroke="#d9534f" stroke-width="5" marker-end="url(#arrowRedOut)" />
+                <text x="410" y="95" font-family="sans-serif" font-weight="bold" fill="#d9534f" text-anchor="middle">Heat Out (-Q)</text>
+
+                <!-- +W (Work Out) -->
+                <path d="M 360 190 L 460 190" stroke="#0056b3" stroke-width="5" marker-end="url(#arrowBlueOut)" />
+                <text x="410" y="175" font-family="sans-serif" font-weight="bold" fill="#0056b3" text-anchor="middle">Work Out (+W)</text>
+            </svg>
+            <div class="img-caption">Figure 1.3: Energy transfers and formal sign convention for a system.</div>
+        </div>
+
+        <!-- Calculator 1 -->
+        <div class="calculator">
+            <h3>Interactive App Tool: Unit Conversion Solver</h3>
+            <p>Ensure dimensional homogeneity by converting common properties and energy units with step-by-step cancellation.</p>
+            
+            <select id="conversionType">
+                <option value="velocity">Velocity (km/h to m/s)</option>
+                <option value="pressure">Pressure (N/cm² to kN/m²)</option>
+                <option value="density">Density (mg/litre to kg/m³)</option>
+                <option value="energy">Heat/Work Energy (kJ to Nm)</option>
+                <option value="specific_energy">Specific Work (kJ/kg to J/kg)</option>
+            </select>
+            
+            <input type="number" id="inputValue" placeholder="Enter starting value...">
+            <button class="calc-btn" onclick="solveConversion()">Show Step-by-Step Solution</button>
+
+            <div id="solutionOutput" class="solution-step"></div>
+        </div>
+
+        <!-- QUIZ BUTTON -->
+        <div class="quiz-btn-container">
+            <button class="quiz-btn" onclick="openQuiz()">Take Chapter 1 Quiz</button>
+        </div>
+
+    </div>
+
+    <!-- QUIZ MODAL -->
+    <div id="quizModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeQuiz()">&times;</button>
+            <h2 class="quiz-header">Chapter 1 Practice Quiz</h2>
+            <div id="quiz-container"></div>
+            <button id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            <div id="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function solveConversion() {
+            const type = document.getElementById('conversionType').value;
+            const val = parseFloat(document.getElementById('inputValue').value);
+            const output = document.getElementById('solutionOutput');
+            
+            if (isNaN(val)) {
+                output.style.display = 'block';
+                output.innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            let steps = "";
+            
+            if (type === "velocity") {
+                const result = (val * 1000) / 3600;
+                steps = `Objective: Convert ${val} km/h to m/s\n\n`;
+                steps += `Step 1: Set up the conversion factors.\n  1 km = 1000 m\n  1 hour = 3600 s\n\n`;
+                steps += `Step 2: Multiply and cancel units.\n  (${val} km/h) × (1000 m / 1 km) × (1 h / 3600 s)\n\n`;
+                steps += `Step 3: Calculate the final value.\n  = (${val} × 1000) / 3600 m/s\n  = ${result.toFixed(3)} m/s`;
+            } 
+            else if (type === "pressure") {
+                const result = (val * 10000) / 1000;
+                steps = `Objective: Convert ${val} N/cm² to kN/m²\n\n`;
+                steps += `Step 1: Set up the conversion factors.\n  1 kN = 1000 N\n  1 m² = 10,000 cm²\n\n`;
+                steps += `Step 2: Multiply and cancel units.\n  (${val} N/cm²) × (10^4 cm² / 1 m²) × (1 kN / 1000 N)\n\n`;
+                steps += `Step 3: Calculate the final value.\n  = (${val} × 10^4) / 1000 kN/m²\n  = ${result.toFixed(4)} kN/m²`;
+            }
+            else if (type === "density") {
+                const result = val * 0.001;
+                steps = `Objective: Convert ${val} mg/litre to kg/m³\n\n`;
+                steps += `Step 1: Set up the conversion factors.\n  1 kg = 10^6 mg\n  1 m³ = 1000 litre\n\n`;
+                steps += `Step 2: Multiply and cancel units.\n  (${val} mg/litre) × (1 kg / 10^6 mg) × (1000 litre / 1 m³)\n\n`;
+                steps += `Step 3: Calculate the final value.\n  = (${val} × 1000) / 10^6 kg/m³\n  = ${result.toFixed(4)} kg/m³`;
+            }
+            else if (type === "energy") {
+                const result = val * 1000;
+                steps = `Objective: Convert ${val} kJ to Nm\n\n`;
+                steps += `Step 1: Recall fundamental energy equivalences.\n  1 Joule (J) = 1 Newton-meter (Nm)\n  1 Kilojoule (kJ) = 1000 J\n\n`;
+                steps += `Step 2: Multiply and cancel units.\n  (${val} kJ) × (1000 J / 1 kJ) × (1 Nm / 1 J)\n\n`;
+                steps += `Step 3: Calculate the final value.\n  = ${val} × 1000 Nm\n  = ${result.toFixed(2)} Nm`;
+            }
+            else if (type === "specific_energy") {
+                const result = val * 1000;
+                steps = `Objective: Convert ${val} kJ/kg to J/kg\n\n`;
+                steps += `Step 1: Set up the conversion factors.\n  1 kJ = 1000 J\n\n`;
+                steps += `Step 2: Multiply and cancel units.\n  (${val} kJ/kg) × (1000 J / 1 kJ)\n\n`;
+                steps += `Step 3: Calculate the final value.\n  = ${result.toFixed(2)} J/kg`;
+            }
+
+            output.style.display = 'block';
+            output.innerHTML = steps;
+        }
+
+        // --- Quiz Logic ---
+        const quizData = [
+            { q: "1. Which of the following is NOT an application area of thermodynamics mentioned in the notes?", options: ["Airplanes", "Quantum Computing", "Car radiators", "Refrigeration systems"], ans: 1 },
+            { q: "2. A system where no mass can cross the boundary, but energy can cross, is called a:", options: ["Open System", "Isolated System", "Closed System (Control Mass)", "Control Volume"], ans: 2 },
+            { q: "3. Which of the following is an INTENSIVE property?", options: ["Total Mass", "Total Volume", "Temperature", "Total Momentum"], ans: 2 },
+            { q: "4. A properly selected region in space enclosing a device involving mass flow (like a turbine) is a:", options: ["Closed System", "Open System (Control Volume)", "Control Mass", "Surroundings"], ans: 1 },
+            { q: "5. According to the formal sign convention, heat transfer TO a system is considered:", options: ["Positive (+)", "Negative (-)", "Zero", "Undetermined"], ans: 0 },
+            { q: "6. According to the formal sign convention, work done ON a system is considered:", options: ["Positive (+)", "Negative (-)", "Zero", "Equal to Heat"], ans: 1 },
+            { q: "7. The Zeroth Law of Thermodynamics deals primarily with:", options: ["Conservation of mass", "Thermal equilibrium", "Entropy production", "Friction"], ans: 1 },
+            { q: "8. In engineering, equations must be dimensionally homogeneous. What does this mean?", options: ["All variables must be integers", "Every term must have the same unit", "They must use the SI system", "They cannot contain fractions"], ans: 1 },
+            { q: "9. Any change that a system undergoes from one equilibrium state to another is called a:", options: ["Cycle", "Phase", "Process", "Boundary"], ans: 2 },
+            { q: "10. Which of the following represents 'Work' in thermodynamics?", options: ["Energy transferred by virtue of a temperature difference", "Energy stored in electronic bonds", "Energy transfer associated with a force acting through a distance", "Random microscopic kinetic energy"], ans: 2 }
+        ];
+
+        function buildQuiz() {
+            const container = document.getElementById("quiz-container");
+            container.innerHTML = ""; 
+            quizData.forEach((item, index) => {
+                let optionsHtml = "";
+                item.options.forEach((opt, optIndex) => {
+                    optionsHtml += `<label class="option-label" id="label-${index}-${optIndex}"><input type="radio" name="q${index}" value="${optIndex}"> ${opt}</label>`;
+                });
+                container.innerHTML += `<div class="question-block" id="qb-${index}"><div class="question-text">${item.q}</div>${optionsHtml}</div>`;
+            });
+        }
+
+        function openQuiz() {
+            buildQuiz();
+            document.getElementById("quiz-result").style.display = "none";
+            document.getElementById("submitQuizBtn").style.display = "block";
+            document.getElementById("quizModal").style.display = "flex";
+        }
+
+        function closeQuiz() {
+            document.getElementById("quizModal").style.display = "none";
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            quizData.forEach((item, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                const block = document.getElementById(`qb-${index}`);
+                const allLabels = block.querySelectorAll('.option-label');
+                allLabels.forEach(lbl => { lbl.classList.remove('correct-ans', 'wrong-ans'); });
+
+                if (selectedOption) {
+                    const selectedVal = parseInt(selectedOption.value);
+                    if (selectedVal === item.ans) {
+                        score++;
+                        document.getElementById(`label-${index}-${selectedVal}`).classList.add('correct-ans');
+                    } else {
+                        document.getElementById(`label-${index}-${selectedVal}`).classList.add('wrong-ans');
+                        document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans'); 
+                    }
+                } else {
+                    document.getElementById(`label-${index}-${item.ans}`).classList.add('correct-ans');
+                }
+            });
+
+            const resultDiv = document.getElementById("quiz-result");
+            resultDiv.innerHTML = `You scored ${score} out of 10!`;
+            if (score >= 8) {
+                resultDiv.style.color = "#155724"; resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.border = "1px solid #c3e6cb";
+            } else {
+                resultDiv.style.color = "#721c24"; resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.border = "1px solid #f5c6cb";
+            }
+            resultDiv.style.display = "block";
+            document.getElementById("submitQuizBtn").style.display = "none";
+        }
+    </script>
+</body>
+</html>
